@@ -20,15 +20,29 @@
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{font-family:'DM Sans',sans-serif;background:var(--ink);color:var(--ice);font-size:15px;overflow-x:hidden;cursor:none}
-a,button,[onclick]{cursor:none!important}
+body{font-family:'DM Sans',sans-serif;background:var(--ink);color:var(--ice);font-size:15px;overflow-x:hidden}
 /* CURSOR */
-.cursor{position:fixed;width:8px;height:8px;background:var(--blue2);border-radius:50%;pointer-events:none;z-index:99999;transform:translate(-50%,-50%);transition:width 0.15s,height 0.15s,opacity 0.15s}
-.cursor-ring{position:fixed;width:36px;height:36px;border:1.5px solid rgba(77,171,255,0.55);border-radius:50%;pointer-events:none;z-index:99998;transform:translate(-50%,-50%);transition:width 0.25s,height 0.25s,border-color 0.25s,opacity 0.2s}
-.cursor.hover{width:12px;height:12px;background:var(--blue)}
-.cursor-ring.hover{width:50px;height:50px;border-color:rgba(77,171,255,0.25)}
-.cursor.click{width:5px;height:5px;opacity:0.5}
-.cursor-ring.click{width:26px;height:26px}
+body,*{cursor:none!important}
+.cursor{
+  position:fixed;pointer-events:none;z-index:2147483647;
+  width:10px;height:10px;border-radius:50%;
+  background:var(--blue2);
+  transform:translate(-50%,-50%);
+  transition:width .12s,height .12s,opacity .12s;
+  will-change:left,top;
+}
+.cursor-ring{
+  position:fixed;pointer-events:none;z-index:2147483646;
+  width:38px;height:38px;border-radius:50%;
+  border:2px solid rgba(77,171,255,0.5);
+  transform:translate(-50%,-50%);
+  transition:width .22s,height .22s,border-color .22s,opacity .15s;
+  will-change:left,top;
+}
+.cursor.hover{width:16px;height:16px;background:var(--blue)}
+.cursor-ring.hover{width:54px;height:54px;border-color:rgba(77,171,255,0.2)}
+.cursor.down{width:7px;height:7px;opacity:.7}
+.cursor-ring.down{width:30px;height:30px}
 
 /* NAV */
 nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:0 32px;display:flex;align-items:center;height:70px;transition:all 0.4s}
@@ -4509,7 +4523,7 @@ async function publishToGitHub() {
       dbg([`✅ SHA: ${sha.slice(0,12)}...`, `⚠️ Fetch échoué (${fetchErr.message}) → DOM sérialisé`]);
     }
 
-    // Curseur custom conservé lors de la publication ✅
+    // ✅ Curseur conservé lors de la publication
 
     const srcKo = (sourceHTML.length / 1024).toFixed(1);
     const hasProd = sourceHTML.includes('let PRODUCTS');
@@ -4700,47 +4714,71 @@ document.addEventListener('keydown', e => {
 
 /* ═══════════ CUSTOM CURSOR ═══════════ */
 (function(){
-  const dot  = document.createElement('div'); dot.className  = 'cursor';
-  const ring = document.createElement('div'); ring.className = 'cursor-ring';
-  document.body.appendChild(dot);
-  document.body.appendChild(ring);
-  let mx=0, my=0, rx=0, ry=0;
+  function initCursor(){
+    // Vérifie si déjà initialisé
+    if(document.querySelector('.cursor')) return;
 
-  document.addEventListener('mousemove', e => {
-    mx = e.clientX; my = e.clientY;
-    dot.style.left = mx+'px'; dot.style.top = my+'px';
-  });
+    var dot  = document.createElement('div');
+    var ring = document.createElement('div');
+    dot.className  = 'cursor';
+    ring.className = 'cursor-ring';
 
-  // Hover effect sur tous les éléments interactifs
-  function bindHover(el) {
-    el.addEventListener('mouseenter', () => { dot.classList.add('hover'); ring.classList.add('hover'); });
-    el.addEventListener('mouseleave', () => { dot.classList.remove('hover'); ring.classList.remove('hover'); });
-  }
-  document.querySelectorAll('a, button, [onclick], .product-card, .cat-card, .blog-card, .filter-btn, .nav-logo, .nav-links a').forEach(bindHover);
+    // CRITIQUE : pointer-events none pour que les clics passent
+    dot.style.cssText  = 'pointer-events:none!important;position:fixed;z-index:2147483647';
+    ring.style.cssText = 'pointer-events:none!important;position:fixed;z-index:2147483646';
 
-  // Observer pour les éléments ajoutés dynamiquement (produits, blog…)
-  new MutationObserver(mutations => {
-    mutations.forEach(m => m.addedNodes.forEach(n => {
-      if(n.nodeType===1){
-        if(n.matches('a,button,[onclick],.product-card,.cat-card,.blog-card,.filter-btn')) bindHover(n);
-        n.querySelectorAll && n.querySelectorAll('a,button,[onclick],.product-card,.cat-card,.blog-card,.filter-btn').forEach(bindHover);
+    document.body.appendChild(dot);
+    document.body.appendChild(ring);
+
+    var mx=0, my=0, rx=0, ry=0, ticking=false;
+
+    document.addEventListener('mousemove', function(e){
+      mx = e.clientX;
+      my = e.clientY;
+      dot.style.left = mx+'px';
+      dot.style.top  = my+'px';
+      if(!ticking){
+        ticking=true;
+        requestAnimationFrame(function(){ ticking=false; });
       }
-    }));
-  }).observe(document.body, {childList:true, subtree:true});
+    }, {passive:true});
 
-  document.addEventListener('mousedown', () => { dot.classList.add('click'); ring.classList.add('click'); });
-  document.addEventListener('mouseup',   () => { dot.classList.remove('click'); ring.classList.remove('click'); });
-  document.addEventListener('mouseleave',() => { dot.style.opacity='0'; ring.style.opacity='0'; });
-  document.addEventListener('mouseenter',() => { dot.style.opacity='1'; ring.style.opacity='1'; });
+    function addHover(el){
+      if(el._cursorBound) return;
+      el._cursorBound = true;
+      el.addEventListener('mouseenter', function(){ dot.classList.add('hover'); ring.classList.add('hover'); });
+      el.addEventListener('mouseleave', function(){ dot.classList.remove('hover'); ring.classList.remove('hover'); });
+    }
 
-  function animateRing() {
-    rx += (mx - rx) * 0.12;
-    ry += (my - ry) * 0.12;
-    ring.style.left = rx+'px';
-    ring.style.top  = ry+'px';
-    requestAnimationFrame(animateRing);
+    function bindAll(){
+      document.querySelectorAll('a,button,[onclick],.product-card,.cat-card,.blog-card,.filter-btn,.nav-logo,.size-btn,.color-dot,.qty-btn,.modal-thumb,.cart-item-del,.checkout-btn,.btn,.btn-primary,.btn-ghost').forEach(addHover);
+    }
+    bindAll();
+
+    new MutationObserver(function(){
+      bindAll();
+    }).observe(document.body, {childList:true, subtree:true});
+
+    document.addEventListener('mousedown', function(){ dot.classList.add('down'); ring.classList.add('down'); });
+    document.addEventListener('mouseup',   function(){ dot.classList.remove('down'); ring.classList.remove('down'); });
+    document.addEventListener('mouseleave', function(){ dot.style.opacity='0'; ring.style.opacity='0'; });
+    document.addEventListener('mouseenter', function(){ dot.style.opacity='1'; ring.style.opacity='1'; });
+
+    (function tick(){
+      rx += (mx-rx)*0.13;
+      ry += (my-ry)*0.13;
+      ring.style.left = rx+'px';
+      ring.style.top  = ry+'px';
+      requestAnimationFrame(tick);
+    })();
   }
-  animateRing();
+
+  // Lance dès que possible
+  if(document.body){
+    initCursor();
+  } else {
+    document.addEventListener('DOMContentLoaded', initCursor);
+  }
 })();
 
 
