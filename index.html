@@ -4432,10 +4432,10 @@ function renderRevChart() {
 }
 
 /* ═══════════ GITHUB SYNC ═══════════ */
-const GH_USER = 'saadseb';
-const GH_REPO = 'saadseb.github.io';
+const GH_USER = 'sdnsbt';
+const GH_REPO = 'vapornova';
 const GH_FILE = 'index.html';
-const GH_TOKEN_KEY = 'fc_gh_token';
+const GH_TOKEN_KEY = 'vn_gh_token';
 
 function saveGhToken() {
   const token = document.getElementById('gh-token').value.trim();
@@ -4472,7 +4472,7 @@ async function publishToGitHub() {
     dbg(['⏳ Connexion à GitHub...']);
 
     const getResp = await fetch(
-      `https://api.github.com/repos/${GH_USER}/${GH_REPO}/contents/${GH_FILE}`,
+      `https://api.github.com/repos/${GH_USER}/${GH_REPO}/contents/${GH_FILE}?ref=main`,
       { headers: { 'Authorization': `token ${token}`, 'Accept': 'application/vnd.github.v3+json' } }
     );
     if (!getResp.ok) {
@@ -4531,30 +4531,30 @@ async function publishToGitHub() {
     // ── ÉTAPE 3 : injecter PRODUCTS, BLOG_POSTS, ORDERS ──
     statusEl.textContent = '⏳ 3/4 — Injection des données...';
 
-    const savedProds = JSON.parse(localStorage.getItem('fc_products') || 'null') || PRODUCTS;
+    const savedProds = JSON.parse(localStorage.getItem('vn_products') || 'null') || PRODUCTS;
     const productsWithImgs = savedProds.map(p => {
-      const custom = localStorage.getItem('fc_img_' + p.id);
+      const custom = localStorage.getItem('vn_img_' + p.id);
       return custom ? { ...p, img: custom } : p;
     });
     const productsJSON = JSON.stringify(productsWithImgs);
-    const savedBlog    = JSON.parse(localStorage.getItem('fc_blog') || 'null') || BLOG_POSTS;
+    const savedBlog    = JSON.parse(localStorage.getItem('vn_blog') || 'null') || BLOG_POSTS;
     const blogJSON     = JSON.stringify(savedBlog);
-    const savedOrders  = localStorage.getItem('fc_orders');
+    const savedOrders  = localStorage.getItem('vn_orders');
 
     let newHTML = sourceHTML;
     let prodOK = false, blogOK = false;
 
-    const MAP_TOKEN = '.map(normalizeProduct);';
-    const prodStart = newHTML.indexOf('let PRODUCTS');
+    const MAP_TOKEN = '\nlet AFFILIATE_PRODUCTS';
+    const prodStart = newHTML.indexOf('let PRODUCTS = JSON.parse');
     const prodEnd   = prodStart !== -1 ? newHTML.indexOf(MAP_TOKEN, prodStart) : -1;
     if (prodStart !== -1 && prodEnd !== -1) {
       newHTML = newHTML.slice(0, prodStart)
-              + `let PRODUCTS = (${productsJSON})${MAP_TOKEN}`
-              + newHTML.slice(prodEnd + MAP_TOKEN.length);
+              + `let PRODUCTS = ${productsJSON};`
+              + newHTML.slice(prodEnd);
       prodOK = true;
     }
 
-    const BLOG_MARKERS = ['let ORDERS', '// Ads config', 'const ADS_DEFAULTS', 'const ADMIN_PWD_KEY'];
+    const BLOG_MARKERS = ['let cart', 'let ORDERS', 'const ADMIN_PWD_KEY', 'const ADS_DEFAULTS'];
     const blogStart = newHTML.indexOf('let BLOG_POSTS');
     if (blogStart !== -1) {
       let blogEnd = -1;
@@ -4630,16 +4630,17 @@ async function publishToGitHub() {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          message: `FaizaCaftan update — ${new Date().toLocaleString('fr-FR')}`,
+          message: `VaporNova update — ${new Date().toLocaleString('fr-FR')}`,
           content: encoded,
-          sha: sha
+          sha: sha,
+          branch: 'main'
         })
       }
     );
 
     if (!putResp.ok) {
       const e = await putResp.json();
-      throw new Error(`GitHub PUT ${putResp.status}: ${e.message || 'Erreur inconnue'}`);
+      throw new Error(`GitHub PUT ${putResp.status}: ${e.message || JSON.stringify(e)}`);
     }
 
     document.getElementById('adminModal').classList.add('open');
