@@ -4432,9 +4432,10 @@ function renderRevChart() {
 }
 
 /* ═══════════ GITHUB SYNC ═══════════ */
-const GH_USER = 'saadseb';
-const GH_REPO = 'saadseb.github.io';
+const GH_USER = 'sdnsbt';
+const GH_REPO = 'vapornova';
 const GH_FILE = 'index.html';
+const GH_BRANCH = 'main';
 const GH_TOKEN_KEY = 'vn_gh_token';
 
 function saveGhToken() {
@@ -4473,7 +4474,7 @@ async function publishToGitHub() {
     dbg(['⏳ Connexion à GitHub pour récupérer le SHA du fichier...']);
 
     const getResp = await fetch(
-      `https://api.github.com/repos/${GH_USER}/${GH_REPO}/contents/${GH_FILE}`,
+      `https://api.github.com/repos/${GH_USER}/${GH_REPO}/contents/${GH_FILE}?ref=${GH_BRANCH}`,
       { headers: { 'Authorization': `token ${token}`, 'Accept': 'application/vnd.github.v3+json' } }
     );
     if (!getResp.ok) {
@@ -4640,7 +4641,8 @@ async function publishToGitHub() {
         body: JSON.stringify({
           message: `VaporNova update — ${new Date().toLocaleString('fr-FR')}`,
           content: encoded,
-          sha: sha
+          sha: sha,
+          branch: GH_BRANCH
         })
       }
     );
