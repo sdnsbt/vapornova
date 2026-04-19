@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Conseils vape, guides et actualités sur les meilleurs équipements et e-liquides.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://vapornova.fr/blog/">
+  <title>Blog Vape — Conseils & Actualités | VaporNova</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400&family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style-enhanced.css">
+  <link rel="stylesheet" href="style-pages.css">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7479282629047694" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<!-- COOKIE BANNER -->
+<div id="cookieBanner">
+  <p>🍪 Nous utilisons des cookies pour améliorer votre expérience et afficher des publicités pertinentes.</p>
+  <div class="cookie-btns">
+    <button class="btn-cookie-accept" onclick="document.getElementById('cookieBanner').remove()">Accepter</button>
+    <button class="btn-cookie-reject" onclick="document.getElementById('cookieBanner').remove()">Refuser</button>
+  </div>
+</div>
+
+<div id="adminLogin">
+  <div class="login-box">
+    <button onclick="document.getElementById('adminLogin').classList.remove('open')" style="position:absolute;top:16px;right:16px;background:none;border:none;color:#555;font-size:20px;cursor:pointer;line-height:1" title="Fermer">✕</button>
+    <button onclick="document.getElementById('adminLogin').classList.remove('open');showPage('home')" style="position:absolute;top:16px;left:16px;background:none;border:none;color:#888;font-size:13px;cursor:pointer;display:flex;align-items:center;gap:4px;font-family:'Tajawal',sans-serif" title="Retour à l'accueil">← Accueil</button>
+    <div class="login-logo">⚙️ ADMIN</div>
+    <div class="login-sub">VaporNova — Panneau d'administration</div>
+    <div class="login-field"><label>Mot de passe admin</label><input type="password" id="adminPwd" placeholder="••••••••" onkeydown="if(event.key==='Enter')checkLogin()"></div>
+    <button class="login-btn" onclick="checkLogin()">Se connecter</button>
+    <div class="login-error" id="loginError">❌ Mot de passe incorrect</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+     ADMIN PANEL
+═══════════════════════════════════════════════════ -->
+<div id="adminModal">
+  <!-- Top bar -->
+  <div class="adm-topbar">
+    <div class="adm-topbar-logo">⚙️ VaporNova — Admin Panel</div>
+    <span style="font-size:12px;color:#444;margin-right:auto">Panneau de gestion</span>
+    <button class="adm-topbar-close" onclick="closeAdmin()" title="Fermer">✕</button>
+  </div>
+  <div class="adm-layout">
+    <!-- Sidebar nav -->
+    <div class="adm-sidebar">
+      <div class="adm-nav-item active" onclick="showAdmTab('dashboard',this)"><span class="adm-nav-icon">📊</span>Dashboard</div>
+      <div class="adm-nav-item" onclick="showAdmTab('products',this)"><span class="adm-nav-icon">👗</span>Produits</div>
+      <div class="adm-nav-item" onclick="showAdmTab('affiliates',this)"><span class="adm-nav-icon">🔗</span>Affiliés</div>
+      <div class="adm-nav-item" onclick="showAdmTab('blog-adm',this)"><span class="adm-nav-icon">✍️</span>Blog SEO</div>
+      <div class="adm-nav-item" onclick="showAdmTab('orders',this)"><span class="adm-nav-icon">📦</span>Commandes</div>
+      <div class="adm-nav-item" onclick="showAdmTab('payments',this)"><span class="adm-nav-icon">💳</span>Paiements</div>
+      <div class="adm-nav-item" onclick="showAdmTab('ads',this)"><span class="adm-nav-icon">📢</span>Pubs / AdSense</div>
+      <div class="adm-nav-item" onclick="showAdmTab('promo',this)"><span class="adm-nav-icon">🎯</span>Promotions</div>
+      <div class="adm-nav-item" onclick="showAdmTab('settings',this)"><span class="adm-nav-icon">⚙️</span>Paramètres</div>
+    </div>
+    <!-- Main area -->
+    <div class="adm-main">
+
+      <!-- ── DASHBOARD ── -->
+      <div class="adm-tab active" id="adm-dashboard">
+        <div class="adm-section-title">📊 Vue d'ensemble</div>
+        <div class="adm-stats">
+          <div class="adm-stat">
+            <div class="adm-stat-icon">👗</div>
+            <div class="adm-stat-body">
+              <div class="adm-stat-val" id="dash-products">8</div>
+              <div class="adm-stat-lbl">Produits</div>
+              <div class="adm-stat-trend">↑ actifs</div>
+            </div>
+          </div>
+          <div class="adm-stat">
+            <div class="adm-stat-icon">✍️</div>
+            <div class="adm-stat-body">
+              <div class="adm-stat-val" id="dash-blog">6</div>
+              <div class="adm-stat-lbl">Articles Blog</div>
+              <div class="adm-stat-trend">↑ SEO actif</div>
+            </div>
+          </div>
+          <div class="adm-stat">
+            <div class="adm-stat-icon">📦</div>
+            <div class="adm-stat-body">
+              <div class="adm-stat-val" id="dash-orders">2</div>
+              <div class="adm-stat-lbl">Commandes</div>
+              <div class="adm-stat-trend">↑ en cours</div>
+            </div>
+          </div>
+          <div class="adm-stat">
+            <div class="adm-stat-icon">📢</div>
+            <div class="adm-stat-body">
+              <div class="adm-stat-val">3</div>
+              <div class="adm-stat-lbl">Pubs actives</div>
+              <div class="adm-stat-trend warn">→ AdSense prêt</div>
+            </div>
+          </div>
+          <div class="adm-stat">
+            <div class="adm-stat-icon">💶</div>
+            <div class="adm-stat-body">
+              <div class="adm-stat-val" data-dash="ads-rev" id="dash-ads-rev">0.00 €</div>
+              <div class="adm-stat-lbl">Revenus Pubs</div>
+              <div class="adm-stat-trend" id="dash-ads-trend">→ Cliquez sur Pubs/AdSense</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="adm-card">
+          <div class="adm-section-title">💰 Revenus simulés (€) — 7 derniers jours</div>
+          <div class="rev-chart" id="revChart"></div>
+        </div>
+
+        <div class="adm-card">
+          <div class="adm-section-title">🚀 Plan Money Machine</div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px">
+            <div style="background:#1a1a28;border-radius:8px;padding:16px;border-left:3px solid #6c63ff">
+              <div style="font-size:12px;color:#c4bcff;font-weight:700;margin-bottom:6px">✅ Étape 1 — FAIT</div>
+              <div style="font-size:12px;color:#666">Site boutique + Admin Panel</div>
+            </div>
+            <div style="background:#1a1a28;border-radius:8px;padding:16px;border-left:3px solid #c9a84c">
+              <div style="font-size:12px;color:#e8c96a;font-weight:700;margin-bottom:6px">🔄 Étape 2 — EN COURS</div>
+              <div style="font-size:12px;color:#666">Blog SEO + Articles AdSense</div>
+            </div>
+            <div style="background:#1a1a28;border-radius:8px;padding:16px;border-left:3px solid #27ae60">
+              <div style="font-size:12px;color:#58d68d;font-weight:700;margin-bottom:6px">⏳ Étape 3</div>
+              <div style="font-size:12px;color:#666">Activer Google AdSense</div>
+            </div>
+            <div style="background:#1a1a28;border-radius:8px;padding:16px;border-left:3px solid #e74c3c">
+              <div style="font-size:12px;color:#e74c3c;font-weight:700;margin-bottom:6px">⏳ Étape 4</div>
+              <div style="font-size:12px;color:#666">TikTok + trafic Google</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="adm-card">
+          <div class="adm-section-title">📝 Actions rapides</div>
+          <div class="adm-quick-actions">
+            <button class="adm-quick-btn" onclick="showAdmTab('products',document.querySelector('.adm-nav-item:nth-child(2)'))">
+              <span class="icon">➕</span>Ajouter produit
+            </button>
+            <button class="adm-quick-btn" onclick="showAdmTab('blog-adm',document.querySelector('.adm-nav-item:nth-child(3)'))">
+              <span class="icon">✍️</span>Écrire article
+            </button>
+            <button class="adm-quick-btn" onclick="showAdmTab('ads',document.querySelector('.adm-nav-item:nth-child(5)'))">
+              <span class="icon">📢</span>Gérer pubs
+            </button>
+            <button class="adm-quick-btn" onclick="showAdmTab('orders',document.querySelector('.adm-nav-item:nth-child(4)'))">
+              <span class="icon">📦</span>Voir commandes
+            </button>
+            <button class="adm-quick-btn" onclick="showAdmTab('payments',document.querySelector('.adm-nav-item:nth-child(5)'))">
+              <span class="icon">💳</span>Paiements
+            </button>
+            <button class="adm-quick-btn" onclick="showAdmTab('settings',document.querySelector('.adm-nav-item:last-child'))">
+              <span class="icon">⚙️</span>Paramètres
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── PRODUCTS ── -->
+      <div class="adm-tab" id="adm-products">
+        <div class="adm-section-title">👗 Gestion des produits</div>
+
+        <!-- Add/Edit form -->
+        <div class="adm-card" id="productForm">
+          <div style="font-size:13px;color:#c4bcff;margin-bottom:16px;font-weight:700" id="productFormTitle">➕ Ajouter un produit</div>
+          <div class="adm-2col">
+            <div class="adm-field"><label>Nom du produit</label><input id="pf-name" placeholder="Ex: Produit Royal Doré"></div>
+            <div class="adm-field"><label>Catégorie</label>
+              <select id="pf-cat">
+                <option value="kit">Produit</option>
+                <option value="pod">Pod</option>
+                <option value="eliquid">E-Liquide</option>
+                <option value="mariage">Mariage</option>
+              </select>
+            </div>
+          </div>
+          <div class="adm-2col">
+            <div class="adm-field"><label>Prix (€)</label><input id="pf-price" type="number" placeholder="2800"></div>
+            <div class="adm-field"><label>Ancien prix (€, optionnel)</label><input id="pf-old" type="number" placeholder="3500"></div>
+          </div>
+          <div class="adm-field">
+            <label>🖼️ Photos du produit <span style="color:#555;font-weight:400">(jusqu'à 6 photos — la 1ère est la photo principale)</span></label>
+            <div class="multi-img-upload-grid" id="pf-img-grid">
+              <!-- slots rendered by JS -->
+            </div>
+            <div style="margin-top:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+              <label style="display:inline-flex;align-items:center;gap:8px;background:rgba(108,99,255,0.15);border:1px solid rgba(108,99,255,0.4);border-radius:8px;padding:8px 14px;cursor:pointer;font-size:12px;color:#c4bcff;font-weight:600;letter-spacing:1px">
+                📁 Ajouter des photos locales
+                <input type="file" id="pf-img-files" accept="image/*" multiple style="display:none" onchange="handleMultiImageUpload(this)">
+              </label>
+              <span style="font-size:11px;color:#555">ou</span>
+              <div style="flex:1;min-width:200px;display:flex;gap:6px">
+                <input id="pf-img-url" placeholder="URL d'image https://..." style="flex:1">
+                <button class="adm-btn adm-btn-primary adm-btn-sm" onclick="addImgFromUrl()" style="white-space:nowrap">+ Ajouter URL</button>
+              </div>
+            </div>
+            <div style="font-size:11px;color:#555;margin-top:6px">JPG, PNG, WEBP — max 5 Mo par photo. Cliquez sur une photo pour la supprimer.</div>
+          </div>
+          <div class="adm-field">
+            <label>🔗 Lien Affilié (optionnel)</label>
+            <input id="pf-affiliate" placeholder="https://amzn.to/... ou autre lien affilié">
+            <div style="font-size:11px;color:#555;margin-top:4px">Si renseigné, le bouton "Commander" redirige vers ce lien</div>
+          </div>
+
+          <!-- Affiliate Products Selection -->
+          <div class="adm-field">
+            <label>⭐ Produits Affiliés à afficher dans le modal</label>
+            <div style="max-height:300px;overflow-y:auto;border:1px solid var(--adm-border);border-radius:8px;padding:12px;background:rgba(0,0,0,0.2)">
+              <div id="pf-affiliated-products" style="display:flex;flex-direction:column;gap:8px">
+                <!-- Populated by JS -->
+              </div>
+            </div>
+            <div style="font-size:11px;color:#555;margin-top:6px">Sélectionnez les produits affiliés recommandés dans le modal de ce produit.</div>
+          </div>
+
+          <div class="adm-field"><label>Description</label><textarea id="pf-desc" placeholder="Description du produit..."></textarea></div>
+          <div class="adm-2col">
+            <div class="adm-field"><label>Badge</label>
+              <select id="pf-badge">
+                <option value="">Aucun</option>
+                <option value="Bestseller">Bestseller</option>
+                <option value="Nouveau">Nouveau</option>
+                <option value="Promo">Promo</option>
+                <option value="Exclusif">Exclusif</option>
+              </select>
+            </div>
+            <div class="adm-field"><label>Étoiles (1-5)</label><input id="pf-stars" type="number" min="1" max="5" value="5"></div>
+          </div>
+          <div class="adm-btn-row">
+            <button class="adm-btn adm-btn-gold" onclick="saveProduct()">💾 Enregistrer le produit</button>
+            <button class="adm-btn adm-btn-danger" onclick="resetProductForm()" id="cancelEditBtn" style="display:none">✕ Annuler</button>
+          </div>
+        </div>
+
+        <!-- Products table -->
+        <div class="adm-card">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;gap:12px;flex-wrap:wrap">
+            <div class="adm-section-title" style="margin-bottom:0">Liste des produits</div>
+            <input class="adm-search" id="prodSearch" placeholder="🔍 Rechercher un produit…" oninput="filterProductsTable(this.value)" style="max-width:240px;margin-bottom:0">
+          </div>
+          <div style="overflow-x:auto">
+            <table class="adm-table" id="productsTable">
+              <thead>
+                <tr>
+                  <th style="width:140px">Photos</th><th>Nom & Info</th><th style="width:80px">Catégorie</th><th style="width:100px">Prix</th><th style="width:80px">Badge</th><th style="width:120px">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="productsTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── AFFILIÉS ── -->
+      <div class="adm-tab" id="adm-affiliates">
+        <div class="adm-section-title">🔗 Gestion des Produits Affiliés</div>
+
+        <!-- Affiliate Add/Edit Form -->
+        <div class="adm-card" id="affiliateForm">
+          <div style="font-size:13px;color:var(--gold2);margin-bottom:16px;font-weight:700" id="affiliateFormTitle">➕ Ajouter un produit affilié</div>
+
+          <!-- ÉTAPE 1 : Lien + Auto-fetch -->
+          <div class="adm-field">
+            <label>🔗 Lien Affilié <span style="color:var(--red)">*</span></label>
+            <div style="display:flex;gap:8px;align-items:center">
+              <input id="af-link" placeholder="https://amzn.to/... ou tout autre lien affilié" style="flex:1">
+              <button class="adm-btn adm-btn-gold" onclick="fetchAffiliateInfo()" id="af-fetch-btn" style="white-space:nowrap;min-width:160px">
+                ✨ Remplir automatiquement
+              </button>
+            </div>
+            <div style="font-size:11px;color:#555;margin-top:4px">Collez le lien affilié puis cliquez sur « Remplir automatiquement » — les infos seront extraites par IA</div>
+          </div>
+
+          <!-- Loader -->
+          <div id="af-fetch-loader" style="display:none;text-align:center;padding:20px;background:rgba(201,168,76,0.05);border:1px solid rgba(201,168,76,0.15);border-radius:8px;margin-bottom:12px">
+            <div style="font-size:1.4rem;animation:spin 1s linear infinite;display:inline-block">⚙️</div>
+            <div style="font-size:12px;color:var(--gold2);margin-top:8px" id="af-fetch-status">Analyse du lien en cours…</div>
+          </div>
+
+          <!-- Debug panel -->
+          <div id="af-debug-log" style="display:none;margin-bottom:12px;background:#07090e;border:1px solid #1a2540;border-radius:8px;overflow:hidden;font-family:'Space Mono',monospace">
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 12px;background:#0d1020;border-bottom:1px solid #1a2540">
+              <span style="font-size:10px;font-weight:700;letter-spacing:2px;color:#3a5070;text-transform:uppercase">🛠 Debug Worker</span>
+              <button onclick="document.getElementById('af-debug-log').style.display='none'" style="background:none;border:none;color:#3a5070;cursor:pointer;font-size:12px;padding:0 4px">✕</button>
+            </div>
+            <div id="af-debug-log-body" style="padding:10px 12px;max-height:220px;overflow-y:auto;display:flex;flex-direction:column;gap:4px"></div>
+          </div>
+
+          <!-- Résultat auto-fill -->
+          <div id="af-fetched-preview" style="display:none;background:rgba(0,229,160,0.05);border:1px solid rgba(0,229,160,0.2);border-radius:8px;padding:14px;margin-bottom:16px">
+            <div style="font-size:11px;font-weight:700;color:var(--green);letter-spacing:1px;margin-bottom:10px">✅ INFORMATIONS EXTRAITES AUTOMATIQUEMENT</div>
+            <div style="display:flex;gap:14px;align-items:flex-start">
+              <img id="af-fetched-img-preview" src="" style="width:90px;height:70px;object-fit:cover;border-radius:6px;border:1px solid rgba(255,255,255,0.1);flex-shrink:0" onerror="this.style.display='none'">
+              <div style="flex:1">
+                <div id="af-fetched-name" style="font-weight:700;font-size:13px;color:var(--ice);margin-bottom:4px"></div>
+                <div id="af-fetched-price" style="font-weight:700;color:var(--gold);font-size:13px;margin-bottom:6px"></div>
+                <div id="af-fetched-desc" style="font-size:11px;color:var(--muted);line-height:1.5"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Champs (pré-remplis ou manuels) -->
+          <div class="adm-2col">
+            <div class="adm-field"><label>Nom du produit</label><input id="af-name" placeholder="Ex: Voopoo Drag S Pro"></div>
+            <div class="adm-field"><label>Prix (€)</label><input id="af-price" type="number" step="0.01" placeholder="49.90"></div>
+          </div>
+          <div class="adm-field">
+            <label>🖼️ URL de la photo</label>
+            <div style="display:flex;gap:8px;align-items:center">
+              <input id="af-img" placeholder="Extraite automatiquement ou saisissez une URL" style="flex:1" oninput="afPreviewImg()">
+              <button class="adm-btn adm-btn-primary adm-btn-sm" onclick="afPreviewImg()" style="white-space:nowrap">Prévisualiser</button>
+            </div>
+            <div id="af-img-preview" style="margin-top:8px;display:none">
+              <img id="af-img-preview-el" src="" alt="" style="width:120px;height:90px;object-fit:cover;border-radius:8px;border:1px solid var(--adm-border)">
+            </div>
+          </div>
+          <div class="adm-field"><label>Description</label><textarea id="af-desc" placeholder="Extraite automatiquement ou saisissez une description..." oninput="afLiveRefresh()"></textarea></div>
+          <div class="adm-2col">
+            <div class="adm-field"><label>Badge</label>
+              <select id="af-badge" onchange="afLiveRefresh()">
+                <option value="">Aucun</option>
+                <option value="TOP">TOP</option>
+                <option value="NEW">Nouveau</option>
+                <option value="SALE">Promo</option>
+                <option value="Exclusif">Exclusif</option>
+              </select>
+            </div>
+            <div class="adm-field"><label>Étoiles (1-5)</label><input id="af-stars" type="number" min="1" max="5" value="5" oninput="afLiveRefresh()"></div>
+          </div>
+          <div class="adm-btn-row">
+            <button class="adm-btn adm-btn-gold" onclick="saveAffiliateProduct()">💾 Enregistrer le produit affilié</button>
+            <button class="adm-btn adm-btn-danger" onclick="resetAffiliateForm()" id="cancelAffiliateBtn" style="display:none">✕ Annuler</button>
+          </div>
+        </div>
+
+        <!-- Affiliate products table -->
+        <div class="adm-card">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;gap:12px;flex-wrap:wrap">
+            <div class="adm-section-title" style="margin-bottom:0">Liste des produits affiliés</div>
+            <input class="adm-search" id="affSearch" placeholder="🔍 Rechercher…" oninput="filterAffiliateTable(this.value)" style="max-width:240px;margin-bottom:0">
+          </div>
+          <div style="overflow-x:auto">
+            <table class="adm-table" id="affiliateTable">
+              <thead>
+                <tr>
+                  <th style="width:100px">Photo</th><th>Nom & Description</th><th style="width:100px">Prix</th><th style="width:180px">Lien Affilié</th><th style="width:100px">Badge</th><th style="width:120px">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="affiliateTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── BLOG SEO ── -->
+      <div class="adm-tab" id="adm-blog-adm">
+        <div class="adm-section-title">✍️ Blog SEO — Machine AdSense</div>
+        <div style="background:rgba(201,168,76,0.06);border:1px solid rgba(201,168,76,0.2);border-radius:8px;padding:14px;margin-bottom:20px;font-size:12px;color:var(--gold2)">
+          💡 <strong>Astuce PRO :</strong> Les articles blog = 3x plus de clics AdSense que les pages produits. Écrivez des articles optimisés SEO avec mots-clés cibles.
+        </div>
+
+        <!-- Article form -->
+        <div class="adm-card">
+          <div style="font-size:13px;color:#c4bcff;margin-bottom:16px;font-weight:700" id="blogFormTitle">✍️ Nouvel article</div>
+          <div class="adm-field"><label>Titre de l'article (SEO)</label><input id="bf-title" placeholder="Ex: Produit Marocain Luxe 2026 — Guide Complet"></div>
+          <div class="adm-2col">
+            <div class="adm-field"><label>Catégorie</label>
+              <select id="bf-cat">
+                <option value="guide">Guide</option>
+                <option value="tendance">Tendance</option>
+                <option value="mariage">Mariage</option>
+                <option value="conseil">Conseil</option>
+                <option value="seo">SEO produit</option>
+              </select>
+            </div>
+            <div class="adm-field">
+              <label>🖼️ Image de l'article</label>
+              <!-- URL externe -->
+              <input id="bf-img" placeholder="https://images.unsplash.com/..." oninput="setBlogImgPreview(this.value)" style="margin-bottom:8px">
+              <!-- Bouton choisir fichier local -->
+              <label style="display:inline-flex;align-items:center;gap:8px;background:rgba(108,99,255,0.15);border:1px solid rgba(108,99,255,0.4);border-radius:8px;padding:8px 14px;cursor:pointer;font-size:12px;color:#c4bcff;font-weight:600;letter-spacing:1px;margin-bottom:8px">
+                📁 Choisir une image locale
+                <input type="file" id="bf-img-file" accept="image/*" style="display:none" onchange="handleBlogImageUpload(this)">
+              </label>
+              <!-- Aperçu -->
+              <div id="bf-img-preview" style="width:100%;height:90px;border-radius:8px;border:1px solid #2a2a3a;background:#12121a;overflow:hidden;display:flex;align-items:center;justify-content:center;color:#555;font-size:12px">
+                Aperçu de l'image
+              </div>
+            </div>
+          </div>
+          <div class="adm-field"><label>Extrait (160 caractères max — méta description SEO)</label><textarea id="bf-excerpt" placeholder="Découvrez notre guide complet sur le kit marocain luxe 2026..." style="min-height:60px"></textarea></div>
+          <div class="adm-field"><label>Contenu complet (HTML autorisé)</label><textarea id="bf-content" placeholder="&lt;h2&gt;Introduction&lt;/h2&gt;&lt;p&gt;Le kit marocain...&lt;/p&gt;" style="min-height:160px;font-family:monospace;font-size:12px"></textarea></div>
+          <!-- Affiliate Products Selection for Blog -->
+          <div class="adm-field">
+            <label>⭐ Produits Affiliés à afficher dans cet article</label>
+            <div style="max-height:300px;overflow-y:auto;border:1px solid var(--adm-border);border-radius:8px;padding:12px;background:rgba(0,0,0,0.2)">
+              <div id="bf-affiliated-products" style="display:flex;flex-direction:column;gap:8px">
+                <!-- Populated by JS -->
+              </div>
+            </div>
+            <div style="font-size:11px;color:#555;margin-top:6px">Sélectionnez les produits affiliés qui apparaîtront en bas de cet article. Pas de limite.</div>
+          </div>
+          
+          <div class="adm-field"><label>Mots-clés SEO (séparés par virgule)</label><input id="bf-keywords" placeholder="kit marocain luxe 2026, kit mariage, pod prix"></div>
+          <div class="adm-btn-row">
+            <button class="adm-btn adm-btn-gold" onclick="saveBlogPost()">📝 Publier l'article</button>
+            <button class="adm-btn adm-btn-primary" onclick="prefillSeoArticle()">🤖 Pré-remplir SEO</button>
+            <button class="adm-btn adm-btn-danger" onclick="resetBlogForm()" id="cancelBlogBtn" style="display:none">✕ Annuler</button>
+          </div>
+        </div>
+
+        <!-- Blog list -->
+        <div class="adm-card">
+          <div class="adm-section-title">Articles publiés</div>
+          <div class="blog-list-adm" id="blogListAdm"></div>
+        </div>
+      </div>
+
+      <!-- ── ORDERS ── -->
+      <div class="adm-tab" id="adm-orders">
+        <div class="adm-section-title">📦 Gestion des commandes</div>
+
+        <!-- Update existing order -->
+        <div class="adm-card" id="orderUpdateForm">
+          <div style="font-size:13px;color:#c4bcff;margin-bottom:16px;font-weight:700">📸 Mettre à jour une commande</div>
+          <div class="adm-2col">
+            <div class="adm-field">
+              <label>Code commande</label>
+              <select id="of-select-id" onchange="onOrderSelect(this.value)">
+                <option value="">— Choisir une commande —</option>
+              </select>
+            </div>
+            <div class="adm-field"><label>Étape actuelle</label>
+              <select id="of-step">
+                <option>En attente</option>
+                <option>Mesures</option>
+                <option>Coupe</option>
+                <option>Couture</option>
+                <option>Finition</option>
+                <option>Prêt</option>
+              </select>
+            </div>
+          </div>
+          <div class="adm-field">
+            <label>📷 Photo de l'étape <span style="color:#555;font-weight:400">(upload local)</span></label>
+            <label style="display:inline-flex;align-items:center;gap:8px;background:rgba(108,99,255,0.15);border:1px solid rgba(108,99,255,0.4);border-radius:8px;padding:9px 14px;cursor:pointer;font-size:12px;color:#c4bcff;font-weight:600;letter-spacing:1px;margin-bottom:8px">
+              📁 Choisir une photo locale
+              <input type="file" id="of-photo-file" accept="image/*" style="display:none" onchange="handleOrderPhotoUpload(this)">
+            </label>
+            <div id="of-photo-preview" style="width:100%;height:120px;border-radius:8px;border:1px solid #2a2a3a;background:#12121a;overflow:hidden;display:flex;align-items:center;justify-content:center;color:#555;font-size:12px">
+              Aperçu de la photo
+            </div>
+          </div>
+          <button class="adm-btn adm-btn-gold" onclick="saveOrderStep()">💾 Mettre à jour l'étape</button>
+        </div>
+
+        <!-- Add new order manually -->
+        <div class="adm-card">
+          <div style="font-size:13px;color:#c4bcff;margin-bottom:16px;font-weight:700">➕ Créer une commande manuellement</div>
+          <div class="adm-2col">
+            <div class="adm-field"><label>Code commande</label><input id="of-id" placeholder="FC-003"></div>
+            <div class="adm-field"><label>Nom client</label><input id="of-name" placeholder="Fatima Zahra"></div>
+          </div>
+          <div class="adm-field"><label>Description</label><input id="of-desc" placeholder="Produit vert brodé, taille M"></div>
+          <button class="adm-btn adm-btn-primary" onclick="createOrderManual()">➕ Créer</button>
+        </div>
+
+        <!-- Orders list -->
+        <div class="adm-card">
+          <div class="adm-section-title">Commandes en cours</div>
+          <div style="overflow-x:auto">
+            <table class="adm-table">
+              <thead><tr><th>Code</th><th>Nom</th><th>Description</th><th>Email</th><th>Étape</th><th>Photos</th><th>Actions</th></tr></thead>
+              <tbody id="ordersTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── PAYMENTS ── -->
+      <div class="adm-tab" id="adm-payments">
+        <div class="adm-section-title">💳 Gestion des Paiements</div>
+
+        <!-- ── Méthodes actives ── -->
+        <div class="adm-card">
+          <div class="adm-section-title" style="font-size:13px">🔘 Méthodes de paiement actives</div>
+          <div style="font-size:12px;color:#555;margin-bottom:14px">Activez ou désactivez les méthodes affichées aux clients dans le panier.</div>
+
+          <div class="pay-method-toggle">
+            <div class="pay-method-left">
+              <div class="pay-method-logo">💬</div>
+              <div>
+                <div class="pay-method-name">WhatsApp</div>
+                <div class="pay-method-desc">Commander & payer via WhatsApp</div>
+              </div>
+            </div>
+            <label class="toggle-switch">
+              <input type="checkbox" id="pm-whatsapp" checked onchange="savePaymentMethods()">
+              <span class="toggle-slider"></span>
+            </label>
+          </div>
+
+          <div class="pay-method-toggle">
+            <div class="pay-method-left">
+              <div class="pay-method-logo">🅿️</div>
+              <div>
+                <div class="pay-method-name">PayPal</div>
+                <div class="pay-method-desc">Paiement international via PayPal</div>
+              </div>
+            </div>
+            <label class="toggle-switch">
+              <input type="checkbox" id="pm-paypal" checked onchange="savePaymentMethods()">
+              <span class="toggle-slider"></span>
+            </label>
+          </div>
+
+          <div class="pay-method-toggle" style="border:1px solid rgba(201,168,76,0.3)">
+            <div class="pay-method-left">
+              <div class="pay-method-logo">💳</div>
+              <div>
+                <div class="pay-method-name">Visa / Mastercard</div>
+                <div class="pay-method-desc">Carte bancaire via Stripe (nécessite une clé Stripe)</div>
+              </div>
+            </div>
+            <label class="toggle-switch">
+              <input type="checkbox" id="pm-card" onchange="savePaymentMethods()">
+              <span class="toggle-slider"></span>
+            </label>
+          </div>
+        </div>
+
+        <!-- ── Stripe Config ── -->
+        <div class="adm-card" style="border:1px solid rgba(99,178,124,0.35)">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;flex-wrap:wrap;gap:8px">
+            <div class="adm-section-title" style="font-size:13px;margin-bottom:0">⚡ Configuration Stripe (Visa / Mastercard)</div>
+            <span id="stripe-status-badge" class="stripe-status-badge inactive">● Non configuré</span>
+          </div>
+          <div style="background:rgba(99,178,124,0.06);border-radius:8px;padding:12px;margin-bottom:16px;font-size:12px;color:#58d68d">
+            💡 Stripe permet d'accepter Visa, Mastercard, American Express, Apple Pay & Google Pay. Créez un compte gratuit sur <a href="https://stripe.com" target="_blank" style="color:#58d68d;text-decoration:underline">stripe.com</a> puis copiez votre clé Publishable Key.
+          </div>
+          <div class="adm-field">
+            <label>Stripe Publishable Key <span style="color:#555;font-weight:400">(commence par pk_live_ ou pk_test_)</span></label>
+            <input id="stripe-pk" type="password" placeholder="pk_live_xxxxxxxxxxxxxxxxxxxx" autocomplete="off">
+          </div>
+          <div class="adm-field">
+            <label>Stripe Secret Key <span style="color:#555;font-weight:400">(commence par sk_live_ ou sk_test_)</span></label>
+            <input id="stripe-sk" type="password" placeholder="sk_live_xxxxxxxxxxxxxxxxxxxx" autocomplete="off">
+            <div style="font-size:11px;color:#555;margin-top:4px">⚠️ Stocké localement sur votre navigateur uniquement — jamais envoyé à un serveur tiers</div>
+          </div>
+          <div class="adm-2col">
+            <div class="adm-field">
+              <label>Devise</label>
+              <select id="stripe-currency">
+                <option value="eur">EUR — Euro</option>
+                <option value="usd">USD — Dollar</option>
+                <option value="gbp">GBP — Livre Sterling</option>
+                <option value="mad">€ — Dirham (si disponible)</option>
+              </select>
+            </div>
+            <div class="adm-field">
+              <label>Mode</label>
+              <select id="stripe-mode">
+                <option value="test">🧪 Test (sandbox)</option>
+                <option value="live">🚀 Production (live)</option>
+              </select>
+            </div>
+          </div>
+          <div style="display:flex;gap:10px;flex-wrap:wrap">
+            <button class="adm-btn adm-btn-gold" onclick="saveStripeConfig()">💾 Sauvegarder config Stripe</button>
+            <button class="adm-btn adm-btn-primary" onclick="testStripeConnection()">🔌 Tester la connexion</button>
+          </div>
+          <div id="stripe-test-result" style="margin-top:10px;font-size:12px"></div>
+        </div>
+
+        <!-- ── PayPal Config ── -->
+        <div class="adm-card" style="border:1px solid rgba(0,112,186,0.4)">
+          <div class="adm-section-title" style="font-size:13px">🅿️ Configuration PayPal</div>
+          <div id="paypal-status-display" style="background:#1a1a28;border-radius:8px;padding:12px;margin-bottom:16px;font-size:13px;color:#e8c96a">Chargement...</div>
+          <div class="adm-field">
+            <label>Email PayPal (pour recevoir les paiements)</label>
+            <input id="paypal-email-pay" placeholder="votre@paypal.com">
+          </div>
+          <div style="display:flex;gap:10px;flex-wrap:wrap">
+            <button class="adm-btn adm-btn-primary" onclick="savePaypalEmail()">💾 Sauvegarder</button>
+            <a href="https://www.paypal.com/activity/" target="_blank" class="adm-btn adm-btn-primary" style="display:inline-block;text-decoration:none">🌐 Dashboard PayPal</a>
+          </div>
+        </div>
+
+        <!-- ── Taux conversion ── -->
+        <div class="adm-card">
+          <div class="adm-section-title" style="font-size:13px">⚙️ Taux de conversion € → EUR</div>
+          <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+            <div class="adm-field" style="flex:1;min-width:200px;margin:0">
+              <label>1 € = </label>
+              <input id="mad-rate" type="number" step="0.001" value="0.093" style="width:100px;display:inline-block">
+              <span style="color:#666;font-size:12px;margin-left:8px">EUR</span>
+            </div>
+            <button class="adm-btn adm-btn-gold" onclick="saveRate()">💾 Sauvegarder</button>
+          </div>
+          <div style="font-size:11px;color:#555;margin-top:8px">Vérifiez le taux sur <a href="https://xe.com" target="_blank" style="color:#5ba3d9">xe.com</a></div>
+        </div>
+
+        <!-- ── Historique transactions ── -->
+        <div class="adm-card">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;flex-wrap:wrap;gap:8px">
+            <div class="adm-section-title" style="font-size:13px;margin-bottom:0">📋 Historique des transactions</div>
+            <button class="adm-btn adm-btn-danger adm-btn-sm" onclick="clearTransactions()">🗑️ Vider</button>
+          </div>
+          <div id="transactions-list">
+            <div style="text-align:center;color:#555;padding:20px;font-size:13px">
+              <div style="font-size:2rem;margin-bottom:8px">📊</div>
+              Aucune transaction enregistrée pour l'instant.<br>
+              <span style="font-size:11px">Les paiements Stripe et PayPal apparaîtront ici.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── ADS MANAGER ── -->
+      <div class="adm-tab" id="adm-ads">
+        <div class="adm-section-title">📢 Gestionnaire de Publicités AdSense</div>
+
+        <!-- KPI row -->
+        <div class="adm-stats-row" style="margin-bottom:20px">
+          <div class="adm-stat" style="border-color:rgba(201,168,76,0.3);background:rgba(201,168,76,0.05)">
+            <div class="adm-stat-icon">💶</div>
+            <div class="adm-stat-body">
+              <div class="adm-stat-val" id="ads-kpi-total" style="color:var(--gold2)">0.00 €</div>
+              <div class="adm-stat-lbl">Gains totaux</div>
+              <div class="adm-stat-trend" id="ads-kpi-trend">→ Aucune donnée</div>
+            </div>
+          </div>
+          <div class="adm-stat">
+            <div class="adm-stat-icon">📅</div>
+            <div class="adm-stat-body">
+              <div class="adm-stat-val" id="ads-kpi-today">0.00 €</div>
+              <div class="adm-stat-lbl">Aujourd'hui</div>
+              <div class="adm-stat-trend" id="ads-kpi-today-cpm">→ CPM —</div>
+            </div>
+          </div>
+          <div class="adm-stat">
+            <div class="adm-stat-icon">📈</div>
+            <div class="adm-stat-body">
+              <div class="adm-stat-val" id="ads-kpi-month">0.00 €</div>
+              <div class="adm-stat-lbl">Ce mois</div>
+              <div class="adm-stat-trend" id="ads-kpi-avg">→ Moy/jour —</div>
+            </div>
+          </div>
+          <div class="adm-stat">
+            <div class="adm-stat-icon">🖱️</div>
+            <div class="adm-stat-body">
+              <div class="adm-stat-val" id="ads-kpi-clicks">0</div>
+              <div class="adm-stat-lbl">Clics (saisi)</div>
+              <div class="adm-stat-trend" id="ads-kpi-ctr">→ CTR —</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Saisie manuelle des gains -->
+        <div class="adm-card" style="border-color:rgba(201,168,76,0.3)">
+          <div class="adm-section-title">📝 Saisir vos gains AdSense du jour</div>
+          <div style="font-size:11px;color:#666;margin-bottom:14px">Récupérez les chiffres dans votre <a href="https://adsense.google.com/adsense/app#home" target="_blank" style="color:#5ba3d9">tableau de bord AdSense</a> et entrez-les ici pour suivre votre évolution.</div>
+          <div class="adm-2col">
+            <div class="adm-field">
+              <label>Date</label>
+              <input type="date" id="ads-entry-date">
+            </div>
+            <div class="adm-field">
+              <label>Revenus (€)</label>
+              <input type="number" id="ads-entry-revenue" step="0.01" placeholder="ex: 3.47">
+            </div>
+          </div>
+          <div class="adm-2col">
+            <div class="adm-field">
+              <label>Impressions</label>
+              <input type="number" id="ads-entry-impressions" placeholder="ex: 1240">
+            </div>
+            <div class="adm-field">
+              <label>Clics</label>
+              <input type="number" id="ads-entry-clicks" placeholder="ex: 18">
+            </div>
+          </div>
+          <div style="display:flex;gap:10px;flex-wrap:wrap">
+            <button class="adm-btn adm-btn-gold" onclick="saveAdsEntry()">💾 Enregistrer</button>
+            <button class="adm-btn adm-btn-danger adm-btn-sm" onclick="clearAdsHistory()">🗑️ Vider l'historique</button>
+          </div>
+        </div>
+
+        <!-- Revenue chart -->
+        <div class="adm-card">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;flex-wrap:wrap;gap:8px">
+            <div class="adm-section-title" style="margin-bottom:0">📊 Courbe de revenus AdSense</div>
+            <div style="display:flex;gap:6px">
+              <button class="adm-btn adm-btn-sm" onclick="setAdsChartRange(7)" id="ads-chart-7" style="background:var(--blue);color:#fff">7j</button>
+              <button class="adm-btn adm-btn-sm" onclick="setAdsChartRange(30)" id="ads-chart-30">30j</button>
+              <button class="adm-btn adm-btn-sm" onclick="setAdsChartRange(90)" id="ads-chart-90">90j</button>
+            </div>
+          </div>
+          <div id="ads-rev-chart" style="height:160px;display:flex;align-items:flex-end;gap:4px;padding:8px 0 0"></div>
+          <div style="font-size:10px;color:#444;text-align:center;margin-top:6px">Revenus en € — saisie manuelle depuis AdSense</div>
+        </div>
+
+        <!-- History table -->
+        <div class="adm-card">
+          <div class="adm-section-title">📋 Historique des revenus</div>
+          <div id="ads-history-table" style="overflow-x:auto"></div>
+        </div>
+
+        <!-- AdSense ID + Zone controls -->
+        <div class="adm-card">
+          <div class="adm-section-title">🔑 Configuration AdSense</div>
+          <div class="adm-field">
+            <label>ID Publisher</label>
+            <input id="adsenseId" value="ca-pub-7479282629047694" placeholder="ca-pub-XXXXXXXXXXXXXXXX">
+          </div>
+          <div class="adm-field">
+            <label>Stratégie de diffusion</label>
+            <select id="adStrategy">
+              <option value="blog_heavy">Blog = beaucoup + Produits = peu (RECOMMANDÉ)</option>
+              <option value="all_heavy">Partout = maximum</option>
+              <option value="minimal">Minimal — 1 pub par page</option>
+              <option value="off">Tout désactiver</option>
+            </select>
+          </div>
+          <button class="adm-btn adm-btn-primary" onclick="saveAdsConfig()">💾 Sauvegarder config</button>
+        </div>
+
+        <!-- Zone controls -->
+        <div class="adm-card">
+          <div class="adm-section-title">📍 Zones publicitaires actives</div>
+          <div id="adsToggleList"></div>
+        </div>
+
+        <!-- Tips -->
+        <div class="adm-card">
+          <div class="adm-section-title">💡 Conseils pour maximiser vos gains</div>
+          <div style="display:grid;gap:10px">
+            <div style="background:#1a1a28;border-radius:8px;padding:14px;border-left:3px solid #6c63ff">
+              <div style="font-size:12px;color:#c4bcff;font-weight:700">Pages produits → peu de pubs</div>
+              <div style="font-size:11px;color:#555;margin-top:4px">Les visiteurs veulent acheter — trop de pubs les font fuir</div>
+            </div>
+            <div style="background:#1a1a28;border-radius:8px;padding:14px;border-left:3px solid #c9a84c">
+              <div style="font-size:12px;color:#e8c96a;font-weight:700">Articles blog → beaucoup de pubs</div>
+              <div style="font-size:11px;color:#555;margin-top:4px">Les lecteurs ont le temps — mettez 3-4 pubs par article</div>
+            </div>
+            <div style="background:#1a1a28;border-radius:8px;padding:14px;border-left:3px solid #27ae60">
+              <div style="font-size:12px;color:#58d68d;font-weight:700">1000 visiteurs/j × 2% CTR × 0.20€ = 4€/jour</div>
+              <div style="font-size:11px;color:#555;margin-top:4px">À 10 000 visiteurs/jour = ~40€/jour = ~1200€/mois</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── PROMOTIONS ── -->
+      <div class="adm-tab" id="adm-promo">
+        <div class="adm-section-title">🎯 Gestion des Promotions</div>
+        <div class="adm-card">
+          <div style="font-size:13px;color:#c4bcff;margin-bottom:16px;font-weight:700">➕ Créer une promotion</div>
+          <div class="adm-2col">
+            <div class="adm-field"><label>Produit concerné</label><select id="promo-product" id="promoProduct"></select></div>
+            <div class="adm-field"><label>Réduction (%)</label><input type="number" id="promo-pct" placeholder="20" min="1" max="80"></div>
+          </div>
+          <div class="adm-2col">
+            <div class="adm-field"><label>Date début</label><input type="date" id="promo-start"></div>
+            <div class="adm-field"><label>Date fin</label><input type="date" id="promo-end"></div>
+          </div>
+          <button class="adm-btn adm-btn-gold" onclick="savePromo()">🎯 Appliquer promotion</button>
+        </div>
+        <div class="adm-card">
+          <div class="adm-section-title">Promotions actives</div>
+          <div id="promoList" style="color:#555;font-size:13px">Aucune promotion active</div>
+        </div>
+      </div>
+
+      <!-- ── SETTINGS ── -->
+      <div class="adm-tab" id="adm-settings">
+        <div class="adm-section-title">⚙️ Paramètres du site</div>
+        <div class="adm-card">
+          <div class="adm-2col">
+            <div class="adm-field"><label>Nom de la boutique</label><input id="set-name" value="VaporNova"></div>
+            <div class="adm-field"><label>WhatsApp (format: 212XXXXXXX)</label><input id="set-wa" value="491729092941"></div>
+          </div>
+          <div class="adm-field"><label>Email contact</label><input id="set-email" value="sdn.sebti@gmail.com"></div>
+          <div class="adm-field"><label>💳 Email PayPal (pour recevoir les paiements)</label><input id="set-paypal" placeholder="sdn.sebti@gmail.com" value="sdn.sebti@gmail.com"><div style="font-size:11px;color:#555;margin-top:4px">Les clients paieront directement sur ce compte PayPal</div></div>
+          <div class="adm-field"><label>🔗 Stripe Payment Link <span style="color:#555;font-weight:400">(optionnel — créez un lien dans votre dashboard Stripe)</span></label><input id="set-stripe-link" placeholder="https://buy.stripe.com/xxxxx"><div style="font-size:11px;color:#555;margin-top:4px">Si renseigné, les clients seront redirigés vers ce lien pour payer par carte</div></div>
+          <div class="adm-field"><label>Adresse / Ville</label><input id="set-addr" value="Médina de Fès, Maroc"></div>
+          <div class="adm-field"><label>Mot de passe admin (changez-le !)</label><input type="password" id="set-pwd" placeholder="Nouveau mot de passe"></div>
+          <hr class="div">
+          <div class="adm-section-title" style="font-size:12px;margin-top:8px">SEO Global</div>
+          <div class="adm-field"><label>Titre SEO principal</label><input id="set-seo-title" value="VaporNova — Produit Marocain Luxe 2026 | Pod Mariage"></div>
+          <div class="adm-field"><label>Description méta</label><textarea id="set-seo-desc" style="min-height:60px">Boutique de kits marocains luxe. Produit mariage, pod brodée, eliquid. Livraison internationale. Produit pas cher et qualité premium.</textarea></div>
+          <button class="adm-btn adm-btn-gold" onclick="saveSettings()">💾 Sauvegarder paramètres</button>
+        </div>
+
+        <!-- ── GITHUB SYNC ── -->
+        <div class="adm-card" style="border:1px solid rgba(108,99,255,0.4)">
+          <div class="adm-section-title" style="color:#c4bcff">🔗 Synchronisation GitHub — Publier les modifications</div>
+          <div style="background:rgba(108,99,255,0.08);border-radius:8px;padding:12px;margin-bottom:16px;font-size:12px;color:#a89cff">
+            ⚡ Entrez votre token GitHub une seule fois. Ensuite, chaque modification (produits, images, blog) sera publiée automatiquement sur votre site pour tous les visiteurs.
+          </div>
+          <div class="adm-field">
+            <label>GitHub Personal Access Token <span style="color:#555;font-weight:400">(stocké uniquement sur votre navigateur)</span></label>
+            <input type="password" id="gh-token" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" autocomplete="off">
+          </div>
+          <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+            <button class="adm-btn adm-btn-primary" onclick="saveGhToken()">🔑 Enregistrer le token</button>
+            <button class="adm-btn adm-btn-gold" onclick="publishToGitHub()">🚀 Publier sur GitHub maintenant</button>
+            <button class="adm-btn" onclick="saveToServer()" style="background:rgba(0,229,160,0.15);border:1px solid rgba(0,229,160,0.3);color:#00e5a0;margin-top:8px">💾 Sauvegarder en local (server.js)</button>
+            <p style="font-size:11px;color:#444;margin-top:6px">💡 En développement local, lancez <code style="background:#111;padding:2px 6px;border-radius:4px">node server.js</code> puis cliquez "Sauvegarder en local" — aucun GitHub requis.</p>
+            <span id="gh-status" style="font-size:12px;color:#555"></span>
+          </div>
+          <div id="gh-token-status" style="margin-top:10px;font-size:12px"></div>
+        </div>
+      </div>
+
+    </div><!-- end adm-main -->
+  </div><!-- end adm-layout -->
+</div><!-- end adminModal -->
+
+
+
+<!-- CART OVERLAY -->
+<div id="cartOverlay" style="position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:399;display:none;backdrop-filter:blur(4px);cursor:pointer" onclick="closeCart()"></div>
+
+<!-- CART SIDEBAR -->
+<div class="cart-sidebar" id="cartSidebar">
+  <div class="cart-header">
+    <div class="cart-header-title">🛒 Mon Panier</div>
+    <button class="cart-close" onclick="closeCart()">✕</button>
+  </div>
+  <div class="cart-items" id="cartItems">
+    <div class="cart-empty"><div class="cart-empty-icon">🛒</div><p>Votre panier est vide</p></div>
+  </div>
+  <div class="cart-footer" id="cartFooter">
+  </div>
+</div>
+
+<!-- CHECKOUT MODAL -->
+<div id="checkoutModal">
+  <div style="background:var(--ink2);border:1px solid var(--border2);border-radius:18px;width:min(540px,96vw);max-height:92vh;overflow-y:auto;padding:32px;position:relative">
+    <button onclick="closeCheckout()" style="position:absolute;top:14px;right:14px;background:var(--ink3);border:1px solid var(--border);color:var(--ice);width:36px;height:36px;border-radius:50%;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;z-index:1">✕</button>
+
+    <!-- Step 1 : Infos client -->
+    <div id="chk-step-1" class="checkout-step">
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:1.6rem;letter-spacing:2px;color:var(--ice);margin-bottom:4px">📋 Infos de livraison</div>
+      <div style="font-size:12px;color:var(--muted);margin-bottom:20px">Étape 1 / 3 — Vos coordonnées</div>
+      <div class="chk-summary" id="chk-summary-1"></div>
+      <div class="chk-2col" style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+        <div class="field"><label>Prénom *</label><input id="chk-prenom" placeholder="Marie" style="width:100%;background:var(--ink3);border:1px solid var(--border);color:var(--ice);border-radius:8px;padding:10px 14px;font-family:'DM Sans',sans-serif;outline:none"></div>
+        <div class="field"><label>Nom *</label><input id="chk-nom" placeholder="Dupont" style="width:100%;background:var(--ink3);border:1px solid var(--border);color:var(--ice);border-radius:8px;padding:10px 14px;font-family:'DM Sans',sans-serif;outline:none"></div>
+      </div>
+      <div class="field" style="margin-top:12px"><label>Email *</label><input id="chk-email" type="email" placeholder="marie@email.fr" style="width:100%;background:var(--ink3);border:1px solid var(--border);color:var(--ice);border-radius:8px;padding:10px 14px;font-family:'DM Sans',sans-serif;outline:none"></div>
+      <div class="field" style="margin-top:12px"><label>Adresse *</label><input id="chk-adresse" placeholder="12 rue de la Paix" style="width:100%;background:var(--ink3);border:1px solid var(--border);color:var(--ice);border-radius:8px;padding:10px 14px;font-family:'DM Sans',sans-serif;outline:none"></div>
+      <div class="chk-2col" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px">
+        <div class="field"><label>Ville *</label><input id="chk-ville" placeholder="Paris" style="width:100%;background:var(--ink3);border:1px solid var(--border);color:var(--ice);border-radius:8px;padding:10px 14px;font-family:'DM Sans',sans-serif;outline:none"></div>
+        <div class="field"><label>Pays *</label><input id="chk-pays" placeholder="France" style="width:100%;background:var(--ink3);border:1px solid var(--border);color:var(--ice);border-radius:8px;padding:10px 14px;font-family:'DM Sans',sans-serif;outline:none"></div>
+      </div>
+      <button onclick="chkGoToPayment()" style="width:100%;margin-top:20px;padding:14px;background:var(--blue);color:#fff;border:none;border-radius:10px;font-size:13px;font-weight:700;cursor:pointer;letter-spacing:1px;transition:all 0.2s">Continuer → Paiement</button>
+    </div>
+
+    <!-- Step 2 : Paiement -->
+    <div id="chk-step-2" class="checkout-step" style="display:none">
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:1.6rem;letter-spacing:2px;color:var(--ice);margin-bottom:4px">💳 Paiement</div>
+      <div style="font-size:12px;color:var(--muted);margin-bottom:20px">Étape 2 / 3 — Choisissez votre méthode</div>
+      <div class="chk-summary" id="chk-summary-2"></div>
+      <div id="chk-pay-btns" style="display:flex;flex-direction:column;gap:8px;margin-top:16px"></div>
+      <button onclick="chkBackToInfo()" style="width:100%;margin-top:12px;padding:10px;background:transparent;color:var(--muted);border:1px solid var(--border);border-radius:10px;font-size:12px;cursor:pointer">← Retour</button>
+    </div>
+
+    <!-- Step 3 : Confirmation -->
+    <div id="chk-step-3" class="checkout-step" style="display:none">
+      <div style="text-align:center;padding:20px 0">
+        <div style="font-size:3rem;margin-bottom:16px">✅</div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:2px;color:var(--green);margin-bottom:8px">Commande confirmée !</div>
+        <div style="font-size:13px;color:var(--muted);margin-bottom:20px">Confirmation envoyée à : <strong id="chk-confirm-email" style="color:var(--ice)"></strong></div>
+        <div class="chk-confirm-box" id="chk-confirm-recap" style="background:var(--ink3);border:1px solid rgba(0,229,160,0.2);border-radius:10px;padding:16px;margin:12px 0;font-size:13px;color:var(--muted);text-align:left"></div>
+        <div style="margin-top:16px;font-size:12px;color:var(--muted)">N° de suivi : <span id="chk-tracking-code" style="font-family:'Space Mono',monospace;font-size:1.1rem;color:var(--blue2);font-weight:700;letter-spacing:4px;display:inline-block;padding:6px 16px;background:var(--ink3);border-radius:8px;margin-left:8px"></span></div>
+        <button onclick="closeCheckout()" style="margin-top:20px;padding:12px 28px;background:var(--blue);color:#fff;border:none;border-radius:10px;font-size:13px;font-weight:700;cursor:pointer">Fermer</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Accueil</a>
+  <a href="boutique.html">Boutique</a>
+  <a href="affiliation.html">Affiliate</a>
+  <a href="blog.html">Blog</a>
+  <a href="contact.html">Contact</a>
+</div>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <a class="nav-logo" href="index.html">VAPOR<span>NOVA</span></a>
+  <div class="nav-links">
+    <a href="index.html" class="active" id="nav-home">Accueil</a>
+    <a href="boutique.html" id="nav-shop">Boutique</a>
+    <a href="affiliation.html" id="nav-affiliate">Affiliate</a>
+    <a href="blog.html" id="nav-blog" class="active">Blog</a>
+    <a href="contact.html" id="nav-contact">Contact</a>
+  </div>
+  <div class="nav-right">
+    <button class="nav-admin-btn" onclick="openAdminLogin()">⚡ ADMIN</button>
+    <button class="nav-cart" onclick="toggleCart()">🛒 Panier <span class="cart-badge" id="cartBadge">0</span></button>
+    <button class="nav-burger" onclick="toggleMobile()">☰</button>
+  </div>
+</nav>
+
+
+
+<div class="page active" id="page-blog">
+  <!-- AD: blog top -->
+  <div id="ad-blog_top" class="ad-slot hidden" style="max-width:1240px;margin:0 auto;padding:0 32px">
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7479282629047694" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  </div>
+
+  <!-- AMBIENT GLOW -->
+  <div class="page-ambient"></div>
+
+  <!-- CINEMATIC HERO — BLOG -->
+  <div class="page-hero blog-hero">
+    <div class="page-hero-bg blog-hero-bg"></div>
+    <div class="page-hero-overlay"></div>
+    <div class="page-hero-grain"></div>
+    <div class="page-hero-scan"></div>
+    <div class="page-hero-breadcrumb">
+      <a href="index.html">Accueil</a>
+      <span>→</span>
+      <span>Blog</span>
+    </div>
+    <div class="page-hero-content">
+      <div class="page-hero-eyebrow">Magazine · Guides · Tendances</div>
+      <h1 class="page-hero-title">Le <em>Blog</em><br>Vape</h1>
+      <p class="page-hero-sub">Guides experts, nouveautés, comparatifs — tout ce qu'un vapoteur passionné doit savoir.</p>
+    </div>
+    <div class="page-hero-stats">
+      <div>
+        <div class="page-hero-stat-val">50+</div>
+        <div class="page-hero-stat-lbl">Articles</div>
+      </div>
+      <div>
+        <div class="page-hero-stat-val">12k</div>
+        <div class="page-hero-stat-lbl">Lecteurs</div>
+      </div>
+    </div>
+  </div>
+  <!-- Blog Liste -->
+  <div class="blog-wrapper" id="blogListSection">
+    <section><div class="blog-grid" id="blogGrid"></div></section>
+
+    <!-- Affiliate Products — Blog Liste -->
+    <section style="margin-top:60px">
+      <div style="max-width:var(--max);margin:0 auto;padding:0 32px">
+        <div style="text-align:center;margin-bottom:40px">
+          <div style="font-size:12px;color:var(--gold2);font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:12px">⭐ Produits Recommandés</div>
+          <h2 style="font-size:2.2rem;font-family:'Bebas Neue',sans-serif;color:var(--ice);letter-spacing:2px">NOS PARTENAIRES AFFILIÉS</h2>
+          <p style="color:var(--muted);margin-top:12px;max-width:600px;margin-left:auto;margin-right:auto">
+            Découvrez nos produits partenaires sélectionnés pour leur qualité exceptionnelle
+          </p>
+        </div>
+        <div id="blogAffiliateGrid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:24px"></div>
+        <div style="text-align:center;margin-top:32px">
+          <a href="affiliation.html" class="btn btn-gold">Voir tous les produits affiliés →</a>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Article vue détaillée -->
+  <div id="blogArticleSection" style="display:none">
+    <div style="max-width:860px;margin:0 auto;padding:0 24px">
+      <button onclick="showBlogList()" style="background:rgba(255,255,255,0.06);border:1px solid var(--border);color:var(--muted);border-radius:8px;padding:10px 18px;cursor:pointer;font-size:13px;margin-bottom:32px;display:inline-flex;align-items:center;gap:8px">
+        ← Retour aux articles
+      </button>
+    </div>
+    <div id="blogArticleContent"></div>
+
+    <!-- Affiliate Products — Article (affiché dynamiquement) -->
+    <section id="blogArticleAffiliateSection" style="margin-top:60px;display:none">
+      <div style="max-width:var(--max);margin:0 auto;padding:0 32px">
+        <div style="text-align:center;margin-bottom:40px">
+          <div style="font-size:12px;color:var(--gold2);font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:12px">⭐ Sélectionnés pour cet article</div>
+          <h2 style="font-size:2.2rem;font-family:'Bebas Neue',sans-serif;color:var(--ice);letter-spacing:2px">PRODUITS AFFILIÉS</h2>
+          <p style="color:var(--muted);margin-top:12px;max-width:600px;margin-left:auto;margin-right:auto">
+            Ces produits ont été sélectionnés en lien avec cet article
+          </p>
+        </div>
+        <div id="blogArticleAffiliateGrid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:24px"></div>
+        <div style="text-align:center;margin-top:32px">
+          <a href="affiliation.html" class="btn btn-gold">Voir tous les produits affiliés →</a>
+        </div>
+      </div>
+    </section>
+  </div>
+
+
+
+<!-- PRODUCT MODAL -->
+<!-- ZOOM OVERLAY -->
+<div class="modal-overlay" id="zoomOverlay" onclick="document.getElementById('zoomOverlay').classList.remove('open')" style="z-index:600;cursor:zoom-out">
+  <img id="zoomImg" src="" alt="" style="max-width:94vw;max-height:92vh;object-fit:contain;border-radius:10px;box-shadow:0 20px 60px rgba(0,0,0,0.7)">
+</div>
+
+<!-- PRODUCT MODAL -->
+<div class="modal-overlay" id="productModal" onclick="if(event.target===this)closeProduct()">
+  <div class="modal">
+    <!-- Image column -->
+    <div class="modal-img-col">
+      <button class="modal-close" onclick="closeProduct()">✕</button>
+      <img id="modalImg" src="" alt="" style="width:100%;height:100%;object-fit:cover;cursor:zoom-in" onclick="zoomCurrentImg()">
+      <!-- Image counter -->
+      <div id="modalImgCounter" style="display:none;position:absolute;bottom:52px;left:50%;transform:translateX(-50%);background:rgba(6,8,15,0.7);color:var(--ice);font-size:11px;padding:4px 10px;border-radius:20px;pointer-events:none"></div>
+      <!-- Nav arrows -->
+      <button class="modal-img-nav prev" onclick="navModalImg(-1)" style="display:none;position:absolute;top:50%;left:10px;transform:translateY(-50%);background:rgba(6,8,15,0.75);border:1px solid var(--border);color:var(--ice);width:34px;height:34px;border-radius:50%;cursor:pointer;font-size:18px;align-items:center;justify-content:center;transition:all 0.2s;z-index:2">‹</button>
+      <button class="modal-img-nav next" onclick="navModalImg(1)" style="display:none;position:absolute;top:50%;right:10px;transform:translateY(-50%);background:rgba(6,8,15,0.75);border:1px solid var(--border);color:var(--ice);width:34px;height:34px;border-radius:50%;cursor:pointer;font-size:18px;align-items:center;justify-content:center;transition:all 0.2s;z-index:2">›</button>
+      <!-- Thumbnails -->
+      <div id="modalThumbs" style="display:none;position:absolute;bottom:0;left:0;right:0;gap:6px;padding:8px;background:rgba(6,8,15,0.6);overflow-x:auto;flex-wrap:nowrap"></div>
+    </div>
+    <!-- Info column -->
+    <div class="modal-body">
+      <div id="modalInfo"></div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- AD: footer -->
+<div id="ad-footer" class="ad-slot hidden" style="width:100%;background:rgba(10,13,24,0.95);padding:12px 32px">
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7479282629047694" data-ad-format="auto" data-full-width-responsive="true"></ins>
+</div>
+
+  <script src="js/datasync.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/nav.js"></script>
+  <script src="js/products.js"></script>
+  <script src="js/affiliation.js"></script>
+  <script src="js/blog.js"></script>
+  <script src="js/modal.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/admin.js"></script>
+  <script src="js/github.js?v=3"></script>
+  <script src="js/analytics.js"></script>
+  <script src="js/page-init.js"></script>
+  <script src="js/router.js"></script>
+
+  <!-- Save Banner -->
+  <div id="saveBanner" style="position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#0d1420;border:1px solid rgba(201,168,76,0.4);border-radius:12px;padding:14px 22px;z-index:9999;display:flex;align-items:center;gap:14px;min-width:320px;max-width:520px;box-shadow:0 8px 32px rgba(0,0,0,0.6);opacity:0;pointer-events:none;transition:opacity 0.3s,transform 0.3s;transform:translateX(-50%) translateY(20px)">
+    <div style="width:32px;height:32px;background:rgba(201,168,76,0.15);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0">💾</div>
+    <div style="flex:1;min-width:0">
+      <div style="font-size:10px;color:var(--gold2);font-weight:700;letter-spacing:1.5px;text-transform:uppercase" id="sbCategory">Sauvegarde</div>
+      <div style="font-size:13px;color:#e8f4ff;font-weight:600;margin-top:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" id="sbMessage"></div>
+      <div style="font-size:10px;color:#3a5070;margin-top:1px" id="sbTime"></div>
+    </div>
+    <button onclick="closeSaveBanner()" style="background:none;border:none;color:#3a5070;font-size:16px;cursor:pointer;padding:0;line-height:1;flex-shrink:0">✕</button>
+    <div id="saveBannerProgress" style="position:absolute;bottom:0;left:0;height:2px;background:linear-gradient(90deg,var(--gold),var(--gold2));border-radius:0 0 12px 12px;width:100%"></div>
+  </div>
+  <style>
+    #saveBanner.show { opacity:1 !important; pointer-events:auto !important; transform:translateX(-50%) translateY(0) !important; }
+    #saveBannerProgress.running { animation: banner-prog 3.5s linear forwards; }
+    @keyframes banner-prog { from { width:100% } to { width:0% } }
+  </style>
+
+
+<div id="toast"></div>
+
+<script>
+(function() {
+  var nav = document.getElementById('mainNav');
+  if (!nav) return;
+  function onScroll() {
+    if (window.scrollY > 40) nav.classList.add('scrolled');
+    else nav.classList.remove('scrolled');
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+})();
+</script>
+
+
+<script>
+(function(){
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('visible'); obs.unobserve(e.target); } });
+  }, {threshold:0.1, rootMargin:'0px 0px -30px 0px'});
+  document.querySelectorAll('.reveal').forEach(function(el){ obs.observe(el); });
+  var nav = document.getElementById('mainNav');
+  if(nav){ window.addEventListener('scroll', function(){ nav.classList.toggle('scrolled', window.scrollY>40); }, {passive:true}); }
+})();
+</script>
+</body>
+</html>
