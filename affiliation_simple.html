@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Affiliation - VaporNova</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  
+<nav class="nav">
+  <div class="nav-left">
+    <a href="index.html" class="nav-logo">VaporNova</a>
+  </div>
+  <div class="nav-links">
+    <a href="index.html">Accueil</a>
+    <a href="boutique_simple.html">Boutique</a>
+    <a href="affiliation_simple.html" class="active">Affiliate</a>
+    <a href="blog.html">Blog</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <div class="nav-right">
+    <button class="nav-cart" onclick="toggleCart()">🛒 Panier <span class="cart-badge" id="cartBadge">0</span></button>
+  </div>
+</nav>
+
+<div style="padding: 100px 20px 50px;">
+  <h1 style="text-align:center; color:#c9a84c; margin-bottom:20px;">⭐ Produits Affiliés</h1>
+  <p style="text-align:center; color:#aaa; margin-bottom:40px;">Nos recommandations partenaires</p>
+  
+  <div id="affiliateGrid" style="display:grid; grid-template-columns:repeat(auto-fill, minmax(280px, 1fr)); gap:28px; max-width:1240px; margin:0 auto;"></div>
+</div>
+
+<script src="js/data.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/affiliation.js"></script>
+<script src="js/cart.js"></script>
+
+<script>
+  // Forcer le rendu
+  console.log('Chargement affiliation...');
+  console.log('AFFILIATE_PRODUCTS:', typeof AFFILIATE_PRODUCTS !== 'undefined' ? AFFILIATE_PRODUCTS.length : 'undefined');
+  console.log('renderAffiliatePage:', typeof renderAffiliatePage);
+  
+  if (typeof renderAffiliatePage === 'function') {
+    renderAffiliatePage();
+    console.log('renderAffiliatePage() appelé');
+  } else {
+    console.error('renderAffiliatePage() non trouvée!');
+  }
+  
+  if (typeof updateCartBadge === 'function') {
+    updateCartBadge();
+  }
+</script>
+
+</body>
+</html>
