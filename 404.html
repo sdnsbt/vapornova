@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+<meta charset="UTF-8">
+<title>VaporNova</title>
+<script>
+  // GitHub Pages SPA redirect trick
+  var path = window.location.pathname;
+  var search = window.location.search;
+  var hash = window.location.hash;
+  var redirect = window.location.origin + '/?p=' + encodeURIComponent(path) + (search ? '&q=' + encodeURIComponent(search) : '') + hash;
+  window.location.replace(redirect);
+</script>
+</head>
+</html>
