@@ -1180,3 +1180,10 @@
     padding: 16px;
   }
 }
+
+/* ── Scrollbars pages internes ── */
+:root { scrollbar-width: thin; scrollbar-color: rgba(30,144,255,0.35) #0a0d18; }
+html::-webkit-scrollbar             { width: 6px; }
+html::-webkit-scrollbar-track       { background: #0a0d18; }
+html::-webkit-scrollbar-thumb       { background: rgba(30,144,255,0.4); border-radius: 99px; }
+html::-webkit-scrollbar-thumb:hover { background: #1e90ff; }
