@@ -1343,3 +1343,80 @@ nav.scrolled {
   border-top: 1px solid rgba(255,255,255,0.08);
   backdrop-filter: var(--blur);
 }
+
+/* ═══════════════════════════════════════
+   SCROLLBARS — Global optimisé
+═══════════════════════════════════════ */
+
+/* ── Scrollbar globale (body / html) ── */
+:root {
+  scrollbar-width: thin;
+  scrollbar-color: var(--blue-dim) var(--ink2);
+}
+html::-webkit-scrollbar              { width: 6px; height: 6px; }
+html::-webkit-scrollbar-track        { background: var(--ink2); }
+html::-webkit-scrollbar-thumb        { background: var(--blue-dim); border-radius: 99px; }
+html::-webkit-scrollbar-thumb:hover  { background: var(--blue); }
+html::-webkit-scrollbar-corner       { background: var(--ink2); }
+
+/* ── Éléments scrollables internes ── */
+.modal-body,
+.cart-items,
+.adm-sidebar,
+.adm-main,
+.adm-table-wrap,
+#gh-token-status,
+.mobile-menu,
+[style*="overflow-y:auto"],
+[style*="overflow-y: auto"],
+[style*="overflow:auto"],
+[style*="overflow: auto"] {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(30,144,255,0.35) transparent;
+}
+
+.modal-body::-webkit-scrollbar,
+.cart-items::-webkit-scrollbar,
+.adm-sidebar::-webkit-scrollbar,
+.adm-main::-webkit-scrollbar,
+.adm-table-wrap::-webkit-scrollbar,
+#gh-token-status::-webkit-scrollbar,
+.mobile-menu::-webkit-scrollbar,
+[style*="overflow-y:auto"]::-webkit-scrollbar,
+[style*="overflow-y: auto"]::-webkit-scrollbar,
+[style*="overflow:auto"]::-webkit-scrollbar,
+[style*="overflow: auto"]::-webkit-scrollbar              { width: 4px; height: 4px; }
+
+.modal-body::-webkit-scrollbar-track,
+.cart-items::-webkit-scrollbar-track,
+.adm-sidebar::-webkit-scrollbar-track,
+.adm-main::-webkit-scrollbar-track,
+.adm-table-wrap::-webkit-scrollbar-track,
+#gh-token-status::-webkit-scrollbar-track,
+.mobile-menu::-webkit-scrollbar-track                     { background: transparent; }
+
+.modal-body::-webkit-scrollbar-thumb,
+.cart-items::-webkit-scrollbar-thumb,
+.adm-sidebar::-webkit-scrollbar-thumb,
+.adm-main::-webkit-scrollbar-thumb,
+.adm-table-wrap::-webkit-scrollbar-thumb,
+#gh-token-status::-webkit-scrollbar-thumb,
+.mobile-menu::-webkit-scrollbar-thumb                     { background: rgba(30,144,255,0.35); border-radius: 99px; transition: background 0.2s; }
+
+.modal-body::-webkit-scrollbar-thumb:hover,
+.cart-items::-webkit-scrollbar-thumb:hover,
+.adm-sidebar::-webkit-scrollbar-thumb:hover,
+.adm-main::-webkit-scrollbar-thumb:hover,
+.adm-table-wrap::-webkit-scrollbar-thumb:hover,
+#gh-token-status::-webkit-scrollbar-thumb:hover,
+.mobile-menu::-webkit-scrollbar-thumb:hover                { background: var(--blue); }
+
+/* ── Admin — scrollbar dorée pour cohérence ── */
+.adm-sidebar,
+.adm-main {
+  scrollbar-color: rgba(201,168,76,0.4) transparent;
+}
+.adm-sidebar::-webkit-scrollbar-thumb,
+.adm-main::-webkit-scrollbar-thumb    { background: rgba(201,168,76,0.4); }
+.adm-sidebar::-webkit-scrollbar-thumb:hover,
+.adm-main::-webkit-scrollbar-thumb:hover { background: var(--adm-gold); }
