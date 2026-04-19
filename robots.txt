@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://vapornova.fr/sitemap.xml
