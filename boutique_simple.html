@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Boutique - VaporNova</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  
+<nav class="nav">
+  <div class="nav-left">
+    <a href="index.html" class="nav-logo">VaporNova</a>
+  </div>
+  <div class="nav-links">
+    <a href="index.html">Accueil</a>
+    <a href="boutique_simple.html" class="active">Boutique</a>
+    <a href="affiliation_simple.html">Affiliate</a>
+    <a href="blog.html">Blog</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <div class="nav-right">
+    <button class="nav-cart" onclick="toggleCart()">🛒 Panier <span class="cart-badge" id="cartBadge">0</span></button>
+  </div>
+</nav>
+
+<div style="padding: 100px 20px 50px;">
+  <h1 style="text-align:center; color:#c9a84c; margin-bottom:40px;">🛍️ Boutique</h1>
+  
+  <div class="shop-filters" style="text-align:center; margin-bottom:30px;">
+    <button class="filter-btn active" onclick="filterShop('all',this)">Tout</button>
+    <button class="filter-btn" onclick="filterShop('kit',this)">Kits</button>
+    <button class="filter-btn" onclick="filterShop('pod',this)">Pods</button>
+    <button class="filter-btn" onclick="filterShop('eliquid',this)">E-Liquides</button>
+  </div>
+  
+  <div class="products-grid" id="shopGrid"></div>
+</div>
+
+<script src="js/data.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/products.js"></script>
+<script src="js/modal.js"></script>
+<script src="js/cart.js"></script>
+
+<script>
+  // Forcer le rendu
+  console.log('Chargement boutique...');
+  console.log('PRODUCTS:', typeof PRODUCTS !== 'undefined' ? PRODUCTS.length : 'undefined');
+  console.log('renderShop:', typeof renderShop);
+  
+  if (typeof renderShop === 'function') {
+    renderShop();
+    console.log('renderShop() appelé');
+  } else {
+    console.error('renderShop() non trouvée!');
+  }
+  
+  if (typeof updateCartBadge === 'function') {
+    updateCartBadge();
+  }
+</script>
+
+</body>
+</html>
