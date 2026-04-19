@@ -1,0 +1,453 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Aegis X 200W",
+      "brand": "",
+      "cat": "kit",
+      "price": 79.9,
+      "old": null,
+      "img": "https://raw.githubusercontent.com/sdnsbt/vapornova/main/images/products/aegis-x-200w.jpg",
+      "images": [
+        "https://raw.githubusercontent.com/sdnsbt/vapornova/main/images/products/aegis-x-200w.jpg"
+      ],
+      "thumbs": [
+        "data:image/jpeg;base64,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"
+      ],
+      "desc": "Le légendaire Aegis X de GeekVape — étanche IP67, résistant aux chocs et à la poussière. Compatible avec tous les atomiseurs 26mm. Chipset AS 2.0 ultra-précis.",
+      "badge": null,
+      "stars": 5,
+      "reviews": 40,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "colors": [
+        "#1e90ff",
+        "#4dabff",
+        "#06080f"
+      ],
+      "specs": [],
+      "affiliate": null,
+      "affiliatedProducts": [
+        "af1776590034468",
+        "af1776590058797",
+        "af1776590078814",
+        "af1776590113450",
+        "af1776590193147"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Caliburn G3 Pro",
+      "brand": "",
+      "cat": "pod",
+      "price": 44.9,
+      "old": null,
+      "img": "https://raw.githubusercontent.com/sdnsbt/vapornova/main/images/products/caliburn-g3-pro.jpg",
+      "images": [
+        "https://raw.githubusercontent.com/sdnsbt/vapornova/main/images/products/caliburn-g3-pro.jpg"
+      ],
+      "thumbs": [
+        "data:image/jpeg;base64,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"
+      ],
+      "desc": "Le pod ultime d'Uwell avec sa recharge rapide 3A et ses cartouches Pro à maillage fin.",
+      "badge": null,
+      "stars": 5,
+      "reviews": 48,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "colors": [
+        "#1e90ff",
+        "#4dabff",
+        "#06080f"
+      ],
+      "specs": [],
+      "affiliate": null,
+      "affiliatedProducts": [
+        "af1776589993372",
+        "af1776590018117",
+        "af1776590034468",
+        "af1776590058797"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Luxe X Pro",
+      "brand": "",
+      "cat": "pod",
+      "price": 59.9,
+      "old": null,
+      "img": "https://raw.githubusercontent.com/sdnsbt/vapornova/main/images/products/luxe-x-pro.jpg",
+      "images": [
+        "https://raw.githubusercontent.com/sdnsbt/vapornova/main/images/products/luxe-x-pro.jpg"
+      ],
+      "thumbs": [
+        "data:image/jpeg;base64,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"
+      ],
+      "desc": "Le Luxe X Pro de Vaporesso combine puissance et élégance. Écran OLED, pod 8ml rechargeable.",
+      "badge": null,
+      "stars": 4,
+      "reviews": 33,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "colors": [
+        "#1e90ff",
+        "#4dabff",
+        "#06080f"
+      ],
+      "specs": [],
+      "affiliate": null,
+      "affiliatedProducts": [
+        "af1776590193147",
+        "af1776590236125",
+        "af1776590288631",
+        "af1776590334522",
+        "af1776590371541"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Dead Rabbit 3 RDA",
+      "brand": "",
+      "cat": "kit",
+      "price": 39.9,
+      "old": null,
+      "img": "https://raw.githubusercontent.com/sdnsbt/vapornova/main/images/products/dead-rabbit-3-rda.jpg",
+      "images": [
+        "https://raw.githubusercontent.com/sdnsbt/vapornova/main/images/products/dead-rabbit-3-rda.jpg"
+      ],
+      "thumbs": [
+        "data:image/jpeg;base64,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"
+      ],
+      "desc": "Le Dead Rabbit 3 est l'atomiseur RDA préféré des cloud chasers.",
+      "badge": null,
+      "stars": 4,
+      "reviews": 48,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "colors": [
+        "#1e90ff",
+        "#4dabff",
+        "#06080f"
+      ],
+      "specs": [],
+      "affiliate": null,
+      "affiliatedProducts": [
+        "af1776589993372",
+        "af1776590018117",
+        "af1776590058797",
+        "af1776590078814"
+      ]
+    },
+    {
+      "id": 5,
+      "name": "GTX One",
+      "brand": "",
+      "cat": "pod",
+      "price": 34.9,
+      "old": null,
+      "img": "https://raw.githubusercontent.com/sdnsbt/vapornova/main/images/products/gtx-one.jpg",
+      "images": [
+        "https://raw.githubusercontent.com/sdnsbt/vapornova/main/images/products/gtx-one.jpg"
+      ],
+      "thumbs": [
+        "data:image/jpeg;base64,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"
+      ],
+      "desc": "Compact, léger et performant — le GTX One est le partenaire idéal du vapoteur nomade.",
+      "badge": null,
+      "stars": 4,
+      "reviews": 53,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "colors": [
+        "#1e90ff",
+        "#4dabff",
+        "#06080f"
+      ],
+      "specs": [],
+      "affiliate": null,
+      "affiliatedProducts": [
+        "af1776589993372",
+        "af1776590018117",
+        "af1776590034468"
+      ]
+    }
+  ],
+  "blog": [
+    {
+      "id": 1,
+      "title": "Comment choisir son premier kit vape en 2026 ?",
+      "cat": "guide",
+      "img": "https://raw.githubusercontent.com/sdnsbt/vapornova/main/images/blog/comment-choisir-son-premier-kit-vape-en-2026-.jpg",
+      "excerpt": "Entre les pods, les box mods et les kits starter, le choix peut être difficile. On vous guide pas à pas.",
+      "content": "<h2>Introduction</h2><p>Entre les pods, les box mods et les kits starter, le choix peut être difficile pour un débutant.</p><h2>Les pods</h2><p>Compacts et discrets, les pods sont idéaux pour débuter.</p><h2>Les box mods</h2><p>Plus puissants, les box mods offrent une expérience personnalisable.</p>",
+      "keywords": "kit vape débutant, premier kit, guide vape",
+      "date": "2026-04-19",
+      "affiliatedProducts": [
+        "af1776589993372",
+        "af1776590018117",
+        "af1776590034468",
+        "af1776590058797",
+        "af1776590078814"
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Top 10 des meilleurs pods de l'année 2026",
+      "cat": "guide",
+      "img": "https://raw.githubusercontent.com/sdnsbt/vapornova/main/images/blog/top-10-des-meilleurs-pods-de-l-annee-2026.jpg",
+      "excerpt": "Nous avons testé et comparé les pods les plus populaires du moment.",
+      "content": "<h2>Notre sélection</h2><p>Nous avons testé les pods les plus populaires pour vous donner notre verdict complet.</p><h2>Critères</h2><p>Autonomie, saveurs, facilité d'utilisation et rapport qualité-prix.</p>",
+      "keywords": "meilleurs pods 2026, comparatif pods",
+      "date": "2026-04-19",
+      "affiliatedProducts": [
+        "af1776589993372",
+        "af1776590018117",
+        "af1776590034468",
+        "af1776590078814",
+        "af1776590113450",
+        "af1776590132333",
+        "af1776590151900"
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Faire ses e-liquides maison : le guide complet",
+      "cat": "guide",
+      "img": "https://raw.githubusercontent.com/sdnsbt/vapornova/main/images/blog/faire-ses-e-liquides-maison-le-guide-complet.jpg",
+      "excerpt": "Le DIY e-liquide permet de réduire drastiquement son budget vape tout en personnalisant ses saveurs.",
+      "content": "<h2>Pourquoi faire son e-liquide ?</h2><p>Le DIY permet de réduire son budget de 70% tout en créant des saveurs uniques.</p><h2>Le matériel nécessaire</h2><p>Bases nicotinées, arômes concentrés, flacons et pipettes.</p>",
+      "keywords": "DIY e-liquide, faire eliquide maison",
+      "date": "2026-04-19",
+      "affiliatedProducts": [
+        "af1776589993372",
+        "af1776590018117",
+        "af1776590078814",
+        "af1776590132333",
+        "af1776590193147"
+      ]
+    }
+  ],
+  "affiliates": [
+    {
+      "id": "af1776589993372",
+      "name": "GEEKVAPE Aegis Legend 2 Kit, Geekvape L200 (Aegis Legend 2) Kit, 200 W with Z Sub Ohm 2021 Tank, 5.5 ml, No Nicotine, No Liquid",
+      "price": 84.9,
+      "affiliateLink": "https://amzlink.to/az0vPs6ry7gPC",
+      "img": "https://m.media-amazon.com/images/I/61JLAX0+-0S.jpg_BO30,255,255,255_UF750,750_SR1910,1000,0,C_ZJPHNwYW4gZm9yZWdyb3VuZD0iIzBGMTExMSIgZm9udD0iQW1hem9uRW1iZXIgNjYiPjQuMzwvc3Bhbj4=,60,875,420,420,0,0_PIRIOFOURANDHALF-medium-V2,TopLeft,190,885_ZJPHNwYW4gZm9yZWdyb3VuZD0iIzU2NTk1OSIgZm9udD0iQW1hem9uRW1iZXIgNjYiPigzMDYpPC9zcGFuPg==,650,875,420,420,0,0_QL100_.jpg",
+      "desc": "Parameters: \nBattery: two 18650 batteries (not included). \nOutput power: 5-200 W. \nOutput voltage: Max. 12 V. \nOutput current: Max. 45 A. \nResistance range: 0.1-3 Ω. \nScreen: 1.08 inch/2.74 cm TFT colour display. \nCharging port: Type-C connector. \nLow voltage warning: 3.2 V ± 0.1 V. \nTemperature ...",
+      "badge": "",
+      "stars": 5
+    },
+    {
+      "id": "af1776590018117",
+      "name": "Tornado Box Pod Kit, 800 mAh E-Cigarette Battery Carrier with Digital Display, Mesh Pod Refillable System, Includes 0.9 Ohm Refillable Empty Pod, USB-C, No Nicotine, No Liquid (Yellow Pink)",
+      "price": 17.99,
+      "affiliateLink": "https://amzlink.to/az0jTfdlfxQ14",
+      "img": "https://m.media-amazon.com/images/I/71LRm4twYcL.jpg_BO30,255,255,255_UF750,750_SR1910,1000,0,C_ZJPHNwYW4gZm9yZWdyb3VuZD0iIzBGMTExMSIgZm9udD0iQW1hem9uRW1iZXIgNjYiPjMuMzwvc3Bhbj4=,60,875,420,420,0,0_PIRIOTHREEANDHALF-medium-V2,TopLeft,190,885_ZJPHNwYW4gZm9yZWdyb3VuZD0iIzU2NTk1OSIgZm9udD0iQW1hem9uRW1iZXIgNjYiPigyMik8L3NwYW4+,650,875,420,420,0,0_QL100_.jpg",
+      "desc": "Tornado Box Pod Kit, 800 mAh E-Cigarette Battery Carrier with Digital Display, Mesh Pod Refillable System, Includes 0.9 Ohm Refillable Empty Pod, USB-C, No Nicotine, No Liquid (Yellow Pink)",
+      "badge": "",
+      "stars": 5
+    },
+    {
+      "id": "af1776590034468",
+      "name": "Vaporizer LOMQ GeminiPro Multifunction Full Temperature Control Rapid Heat Evaporator Herbal LCD Display Type-C Quick Charge (Black)",
+      "price": 39.99,
+      "affiliateLink": "https://amzlink.to/az01XB5AfX8qA",
+      "img": "https://m.media-amazon.com/images/I/71JMaIdasVL.jpg_BO30,255,255,255_UF750,750_SR1910,1000,0,C_ZJPHNwYW4gZm9yZWdyb3VuZD0iIzBGMTExMSIgZm9udD0iQW1hem9uRW1iZXIgNjYiPjMuODwvc3Bhbj4=,60,875,420,420,0,0_PIRIOFOUR-medium-V2,TopLeft,190,885_ZJPHNwYW4gZm9yZWdyb3VuZD0iIzU2NTk1OSIgZm9udD0iQW1hem9uRW1iZXIgNjYiPigxNSk8L3NwYW4+,650,875,420,420,0,0_QL100_.jpg",
+      "desc": "The product does not contain cigarette sticks, pre-installed cigarette cartridges or cigarette oil supplements. It is an empty device without filling. This product is only suitable for adult consumers. This product cannot be made available to children and teenagers by mail order or delivered to c...",
+      "badge": "",
+      "stars": 5
+    },
+    {
+      "id": "af1776590058797",
+      "name": "SMOK RPM 2 Pod Mod Kit with 2000 mAh Battery and 7 ml Capacity Side Filling System 80 W Maximum Power 1.14 Inch Screen USB Type-C Charging DL and MTL Vaping Prism Rainbow No Nicotine",
+      "price": 32.99,
+      "affiliateLink": "https://amzlink.to/az0bj4lzhUMx5",
+      "img": "https://m.media-amazon.com/images/I/71uu7CnNtXL.jpg_BO30,255,255,255_UF750,750_SR1910,1000,0,C_ZJPHNwYW4gZm9yZWdyb3VuZD0iIzBGMTExMSIgZm9udD0iQW1hem9uRW1iZXIgNjYiPjMuNjwvc3Bhbj4=,60,875,420,420,0,0_PIRIOTHREEANDHALF-medium-V2,TopLeft,190,885_ZJPHNwYW4gZm9yZWdyb3VuZD0iIzU2NTk1OSIgZm9udD0iQW1hem9uRW1iZXIgNjYiPig1Nyk8L3NwYW4+,650,875,420,420,0,0_QL100_.jpg",
+      "desc": "This product strictly complies with regulations and contains no nicotine or any form of nicotine carrier, including but not limited to solid and liquid forms such as tobacco and e-cigarette liquid. This product is only sold to persons over 18 years.",
+      "badge": "",
+      "stars": 5
+    },
+    {
+      "id": "af1776590078814",
+      "name": "ELFX Mega Pod Kit 2800 mAh Battery Carrier, 10 ml Refill Pod Dual Mesh Coil, Pod System for MTL & RDL, Colour Display, 2 Modes Eco & Turbo, Automatic Pull, Airflow Control, USB-C, No Nicotine & Liquid, Green",
+      "price": 19.99,
+      "affiliateLink": "https://amzlink.to/az0zDXfhPooqU",
+      "img": "https://m.media-amazon.com/images/I/61aSwkavZkL.jpg_BO30,255,255,255_UF750,750_SR1910,1000,0,C_ZJPHNwYW4gZm9yZWdyb3VuZD0iIzBGMTExMSIgZm9udD0iQW1hem9uRW1iZXIgNjYiPjMuNDwvc3Bhbj4=,60,875,420,420,0,0_PIRIOTHREEANDHALF-medium-V2,TopLeft,190,885_ZJPHNwYW4gZm9yZWdyb3VuZD0iIzU2NTk1OSIgZm9udD0iQW1hem9uRW1iZXIgNjYiPig3KTwvc3Bhbj4=,650,875,420,420,0,0_QL100_.jpg",
+      "desc": "ELFX Mega Pod Kit 2800 mAh Battery Carrier, 10 ml Refill Pod Dual Mesh Coil, Pod System for MTL & RDL, Colour Display, 2 Modes Eco & Turbo, Automatic Pull, Airflow Control, USB-C, No Nicotine & Liquid, Green",
+      "badge": "",
+      "stars": 5
+    },
+    {
+      "id": "af1776590113450",
+      "name": "GEEKVAPE H45 Classic Kit [AEGIS HERO 3 Pod Kit] 45 W Built in 1400 mAh Battery 4 ml Pod Cartridge B Coil (0.4Ω/0.6Ω) E Cigarette Vaporizer No Nicotine (Black)",
+      "price": 35.99,
+      "affiliateLink": "https://amzlink.to/az0V0YXC1HLsm",
+      "img": "https://m.media-amazon.com/images/I/5156r7aHh3L.jpg_BO30,255,255,255_UF750,750_SR1910,1000,0,C_ZJPHNwYW4gZm9yZWdyb3VuZD0iIzBGMTExMSIgZm9udD0iQW1hem9uRW1iZXIgNjYiPjQuMDwvc3Bhbj4=,60,875,420,420,0,0_PIRIOFOUR-medium-V2,TopLeft,190,885_ZJPHNwYW4gZm9yZWdyb3VuZD0iIzU2NTk1OSIgZm9udD0iQW1hem9uRW1iZXIgNjYiPigxMzIpPC9zcGFuPg==,650,875,420,420,0,0_QL100_.jpg",
+      "desc": "Geekvape H45 Classic Product Features \nUltra light. \nIP68 rating. \nTop Airflow Leakproof Design \nBuilt-in 1400 mAh. \n45 W maximum output. \nSame Cartridge As H45 \nGeekVape B Series Coil \n\nGeekVape H45 Classic Parameters \nSize: 44.8 x 30 x 92 mm. \nWorking mode: power/bypass. \nOutput power: 5W~45W. ...",
+      "badge": "",
+      "stars": 5
+    },
+    {
+      "id": "af1776590132333",
+      "name": "GEEKVAPE Aegis Hero 5 Pod Kit | 50W Power, 2000mAh Battery | Vibrant Display, A-Lock Function | 6.5ml Hero Cartridge, Suitable for B-Coil (BOOST VERSION) No Nicotine (Frost Mint)",
+      "price": 30.95,
+      "affiliateLink": "https://amzlink.to/az08TcBKFOMTU",
+      "img": "https://m.media-amazon.com/images/I/518MZ-DGS4L.jpg_BO30,255,255,255_UF750,750_SR1910,1000,0,C_ZJPHNwYW4gZm9yZWdyb3VuZD0iIzBGMTExMSIgZm9udD0iQW1hem9uRW1iZXIgNjYiPjMuODwvc3Bhbj4=,60,875,420,420,0,0_PIRIOFOUR-medium-V2,TopLeft,190,885_ZJPHNwYW4gZm9yZWdyb3VuZD0iIzU2NTk1OSIgZm9udD0iQW1hem9uRW1iZXIgNjYiPig0Myk8L3NwYW4+,650,875,420,420,0,0_QL100_.jpg",
+      "desc": "Geekvape Aegis Hero 5 Pod Kit 2000mAh delivers up to 50W power with new B-boost coils for improved taste and double the life of the coil. Powered by a 2000 mAh battery with fast Type-C charging, it ensures long-lasting use. \nThe 6.5 ml pod reduces refilling and the shockproof, leak-proof Aegis de...",
+      "badge": "",
+      "stars": 5
+    },
+    {
+      "id": "af1776590151900",
+      "name": "Fenix Mini * Marble *",
+      "price": 89,
+      "affiliateLink": "https://amzlink.to/az0hUmvNsjcm6",
+      "img": "https://m.media-amazon.com/images/I/81qPZPIuc6L.jpg_BO30,255,255,255_UF750,750_SR1910,1000,0,C_ZJPHNwYW4gZm9yZWdyb3VuZD0iIzBGMTExMSIgZm9udD0iQW1hem9uRW1iZXIgNjYiPjQuMzwvc3Bhbj4=,60,875,420,420,0,0_PIRIOFOURANDHALF-medium-V2,TopLeft,190,885_ZJPHNwYW4gZm9yZWdyb3VuZD0iIzU2NTk1OSIgZm9udD0iQW1hem9uRW1iZXIgNjYiPig1ODUpPC9zcGFuPg==,650,875,420,420,0,0_QL100_.jpg",
+      "desc": "Discover the world of vaping with our WOLKENKRAFT FX MINI Premium Vaporizer in stylish night blue. Enjoy pure steam taste thanks to real convection technology and insulated steam channel. The advanced technology ensures excellent steam development in just 25 seconds. The evaporator is made of hig...",
+      "badge": "",
+      "stars": 5
+    },
+    {
+      "id": "af1776590173347",
+      "name": "GEEKVAPE Aegis Boost Pro 2 Kit | GEEKVAPE B100 Kit - 0.96 Inch Curved Display, 4.5 ml Pod Compatible with P-Coils Vape Kit E-Cigarette No Nicotine Battery Not Include (Black)",
+      "price": 42.99,
+      "affiliateLink": "https://amzlink.to/az0ExBGarWOk7",
+      "img": "https://m.media-amazon.com/images/I/41CLQpaZMAL.jpg_BO30,255,255,255_UF750,750_SR1910,1000,0,C_ZJPHNwYW4gZm9yZWdyb3VuZD0iIzBGMTExMSIgZm9udD0iQW1hem9uRW1iZXIgNjYiPjMuODwvc3Bhbj4=,60,875,420,420,0,0_PIRIOFOUR-medium-V2,TopLeft,190,885_ZJPHNwYW4gZm9yZWdyb3VuZD0iIzU2NTk1OSIgZm9udD0iQW1hem9uRW1iZXIgNjYiPigxMzkpPC9zcGFuPg==,650,875,420,420,0,0_QL100_.jpg",
+      "desc": "Geekvape B100(Aegis boost pro 2) Kit Parameters: \nBrand: GeekVape \nProduct name: B100 (Aegis Boost Pro 2) kit. \nBattery: single external 18650 battery (not included). \nOutput power: 5W-100W. \nCharging: Type-C charging. \nScreen: 0.96 inch curved screen. \nOperating temperature: 0℃~45℃. \nStorage tem...",
+      "badge": "",
+      "stars": 5
+    },
+    {
+      "id": "af1776590193147",
+      "name": "Vaporizer Herbs Dual Heating System Haptic Feedbacks Precise Temperature Setting Ceramic Chamber LCD Colour Display Timer",
+      "price": 56.98,
+      "affiliateLink": "https://amzlink.to/az0dWJ4dyxXU9",
+      "img": "https://m.media-amazon.com/images/I/71iyGB7wMEL.jpg_BO30,255,255,255_UF750,750_SR1910,1000,0,C_ZJPHNwYW4gZm9yZWdyb3VuZD0iIzBGMTExMSIgZm9udD0iQW1hem9uRW1iZXIgNjYiPjQuNjwvc3Bhbj4=,60,875,420,420,0,0_PIRIOFOURANDHALF-medium-V2,TopLeft,190,885_ZJPHNwYW4gZm9yZWdyb3VuZD0iIzU2NTk1OSIgZm9udD0iQW1hem9uRW1iZXIgNjYiPigyOSk8L3NwYW4+,650,875,420,420,0,0_QL100_.jpg",
+      "desc": "Premium vaporizer, ceramic chamber, magnetic glass mouthpiece, temperature setting, LCD display, many sessions, easy to clean",
+      "badge": "",
+      "stars": 5
+    },
+    {
+      "id": "af1776590210631",
+      "name": "VAPTIO Cosmo Kit Electronic Cigarette 1500 mAh 30 W Power Vape Kit, Starter Kit with 2.0 ml Cosmo Tank 2 Pieces Cosmo Cool, No E Liquid No Nicotine (Black)",
+      "price": 21.9,
+      "affiliateLink": "https://amzlink.to/az0KFyY1jDKa6",
+      "img": "https://m.media-amazon.com/images/I/51fvGj0hYZL.jpg_BO30,255,255,255_UF750,750_SR1910,1000,0,C_ZJPHNwYW4gZm9yZWdyb3VuZD0iIzBGMTExMSIgZm9udD0iQW1hem9uRW1iZXIgNjYiPjMuMTwvc3Bhbj4=,60,875,420,420,0,0_PIRIOTHREE-medium-V2,TopLeft,190,885_ZJPHNwYW4gZm9yZWdyb3VuZD0iIzU2NTk1OSIgZm9udD0iQW1hem9uRW1iZXIgNjYiPigxMjIpPC9zcGFuPg==,650,875,420,420,0,0_QL100_.jpg",
+      "desc": "Brand Name:Vaptio \nMode Type: Cosmo \nTank type: Cosmo. \nTank Size: 2.0ml \nMod Size: 20.3 x 27.0 x 68.9mm \nTank size: 18.5 x 56.9 mm. \nBattery: built-in 1500mAh \nResistance range: 0.7-3.0Ω \nOutput power: 1 - 30 W max. \nShort circuit protection: yes. \nOverheating Protection: Yes \nHead:510 \nMod mat...",
+      "badge": "",
+      "stars": 5
+    },
+    {
+      "id": "af1776590236125",
+      "name": "SMOK IPX 80 Pod Mod Kit 80 W Vape Device 3000 mAh Battery Adjustable Airflow 5.5 ml Pod RPM 2 Coil Type-C Charging IPX67 Protection Without Nicotine Black Carbon Fibre",
+      "price": 32.49,
+      "affiliateLink": "https://amzlink.to/az0YqGtaQnjoT",
+      "img": "https://m.media-amazon.com/images/I/71tO60pgFPL.jpg_BO30,255,255,255_UF750,750_SR1910,1000,0,C_ZJPHNwYW4gZm9yZWdyb3VuZD0iIzBGMTExMSIgZm9udD0iQW1hem9uRW1iZXIgNjYiPjMuNjwvc3Bhbj4=,60,875,420,420,0,0_PIRIOTHREEANDHALF-medium-V2,TopLeft,190,885_ZJPHNwYW4gZm9yZWdyb3VuZD0iIzU2NTk1OSIgZm9udD0iQW1hem9uRW1iZXIgNjYiPigxMzEpPC9zcGFuPg==,650,875,420,420,0,0_QL100_.jpg",
+      "desc": "The product does not contain nicotine and is only sold to people over 18 years of age",
+      "badge": "",
+      "stars": 5
+    },
+    {
+      "id": "af1776590268763",
+      "name": "OXVA Xlim Pro 2 Black Warrior Vape with 1300 mAh in Pod System",
+      "price": 4.9,
+      "affiliateLink": "https://amzlink.to/az09SL7ndQ9aC",
+      "img": "https://m.media-amazon.com/images/I/61p7Aaj9xaL.jpg_BO30,255,255,255_UF750,750_SR1910,1000,0,C_ZJPHNwYW4gZm9yZWdyb3VuZD0iIzBGMTExMSIgZm9udD0iQW1hem9uRW1iZXIgNjYiPjQuMDwvc3Bhbj4=,60,875,420,420,0,0_PIRIOFOUR-medium-V2,TopLeft,190,885_ZJPHNwYW4gZm9yZWdyb3VuZD0iIzU2NTk1OSIgZm9udD0iQW1hem9uRW1iZXIgNjYiPig0MTQpPC9zcGFuPg==,650,875,420,420,0,0_QL100_.jpg",
+      "desc": "The OXVA Xlim Pro 2 pod system impresses with its elegant housing made of a high-quality zinc alloy combined with robust PCTG material. The slim design fits perfectly in the hand and ensures comfortable use. The integrated 0.56\" TFT colour screen not only adds a modern aesthetic, but also gives y...",
+      "badge": "",
+      "stars": 5
+    },
+    {
+      "id": "af1776590288631",
+      "name": "GEEKVAPE Aegis Legend 5 Kit (Z Sub Ohm Tank 5 Version) 200 W TC Box Mod (Battery Not Include) Vape with 7 ml Atomiser Vaper Z XM Coil (0.2Ω/0.4Ω) Vaporiser No Nicotine",
+      "price": 58.45,
+      "affiliateLink": "https://amzlink.to/az0zMgmVeT6gg",
+      "img": "https://m.media-amazon.com/images/I/71Zvd7x6qcL.jpg_BO30,255,255,255_UF750,750_SR1910,1000,0,C_QL100_.jpg",
+      "desc": "GeekVape Aegis Legend 5 Détails: \n1. Composé de Aegis Legend 5 Mod et 1x Tank (Z Sub-Ohm Tank 5) \n2. Supports deux batteries 18650 external with a maximum of 200 W. \n3. AS chip 4.0 for assurer une activation de l",
+      "badge": "",
+      "stars": 5
+    },
+    {
+      "id": "af1776590311926",
+      "name": "Deal: Food Flavour 20 ml, Intensive Aroma Ideal for Baking, Food and Drinks, Also for Nebulisers, Mist Machines, etc. 5 Pieces",
+      "price": 15.33,
+      "affiliateLink": "https://amzlink.to/az0t4icG2WEQL",
+      "img": "https://m.media-amazon.com/images/I/817b99vDv0L.jpg_BO30,255,255,255_UF900,900_SR1910,1000,0,R_PIlimited-time-deal-en,TopLeft,60,374_ZJPHNwYW4gZm9yZWdyb3VuZD0iIzBGMTExMSIgZm9udD0iQW1hem9uRW1iZXIgNjYiPjQuMzwvc3Bhbj4=,60,515,420,420,0,0_PIRIOFOURANDHALF-medium-V2,TopLeft,190,523_ZJPHNwYW4gZm9yZWdyb3VuZD0iIzU2NTk1OSIgZm9udD0iQW1hem9uRW1iZXIgNjYiPigxNzIpPC9zcGFuPg==,650,515,420,420,0,0_QL100_.jpg",
+      "desc": "Aroma – 20 ml x 5 Saveurs: peaches, blueberries, green apple, strawberry, raspberry cherry ingredients: water, aroma, sweeteners (sucralose) instructions for use 3-8 drops per food/drink. Warning: do not consume undiluted. Keep this product out of reach of children. Do not store in high temperatu...",
+      "badge": "",
+      "stars": 5
+    },
+    {
+      "id": "af1776590334522",
+      "name": "Uwell Caliburn G3 Black Vape/E-Cigarette in Pod System - 2.5 ml Tank, 900 mAh, OLED Display, USB-C, SideFill, MTL - Compact & Perfect for Beginners",
+      "price": 22.8,
+      "affiliateLink": "https://amzlink.to/az0vjzNDZNycf",
+      "img": "https://m.media-amazon.com/images/I/41D9zmaAoqL.jpg_BO30,255,255,255_UF750,750_SR1910,1000,0,C_ZJPHNwYW4gZm9yZWdyb3VuZD0iIzBGMTExMSIgZm9udD0iQW1hem9uRW1iZXIgNjYiPjQuMjwvc3Bhbj4=,60,875,420,420,0,0_PIRIOFOUR-medium-V2,TopLeft,190,885_ZJPHNwYW4gZm9yZWdyb3VuZD0iIzU2NTk1OSIgZm9udD0iQW1hem9uRW1iZXIgNjYiPig3ODMpPC9zcGFuPg==,650,875,420,420,0,0_QL100_.jpg",
+      "desc": "The legend lives on! With the Caliburn G3, a successful era continues. The predecessors have conquered the steamer community and now the question is: can the new Pod system live up to the high expectations? Let",
+      "badge": "",
+      "stars": 5
+    },
+    {
+      "id": "af1776590354406",
+      "name": "GeekVape DIGI Max 3000mAh Pod System Kit E-Cigarette Nicotine-Free Colour Black",
+      "price": 35.75,
+      "affiliateLink": "https://amzlink.to/az0IH40YjD35y",
+      "img": "https://m.media-amazon.com/images/I/61Lx87wTtbL.jpg_BO30,255,255,255_UF750,750_SR1910,1000,0,C_ZJPHNwYW4gZm9yZWdyb3VuZD0iIzBGMTExMSIgZm9udD0iQW1hem9uRW1iZXIgNjYiPjMuODwvc3Bhbj4=,60,875,420,420,0,0_PIRIOFOUR-medium-V2,TopLeft,190,885_ZJPHNwYW4gZm9yZWdyb3VuZD0iIzU2NTk1OSIgZm9udD0iQW1hem9uRW1iZXIgNjYiPig5Mik8L3NwYW4+,650,875,420,420,0,0_QL100_.jpg",
+      "desc": "Ultimate steam enjoyment in a handy format - the GeekVape DIGI Max Pod System Kit",
+      "badge": "",
+      "stars": 5
+    },
+    {
+      "id": "af1776590371541",
+      "name": "X-SAPCE ET5 E Cigarette Starter Kit with 1100 mAh Battery, Refillable Vape Pod System for DTL/RDL/MTL Vaping without Liquid, No Nicotine, 2 ml Pods & USB-C Charge",
+      "price": 23.99,
+      "affiliateLink": "https://amzlink.to/az01PRKb69MDH",
+      "img": "https://m.media-amazon.com/images/I/81FLooTRfuL.jpg_BO30,255,255,255_UF750,750_SR1910,1000,0,C_ZJPHNwYW4gZm9yZWdyb3VuZD0iIzBGMTExMSIgZm9udD0iQW1hem9uRW1iZXIgNjYiPjQuMTwvc3Bhbj4=,60,875,420,420,0,0_PIRIOFOUR-medium-V2,TopLeft,190,885_ZJPHNwYW4gZm9yZWdyb3VuZD0iIzU2NTk1OSIgZm9udD0iQW1hem9uRW1iZXIgNjYiPigzNyk8L3NwYW4+,650,875,420,420,0,0_QL100_.jpg",
+      "desc": "X-SAPCE E Cigarette Starter Kit with 1100 mAh Battery, Refillable Vape Pod System for DTL/RDL/MTL Vaping without Liquid without Nicotine 2 ml Pods & USB-C Charge",
+      "badge": "",
+      "stars": 5
+    },
+    {
+      "id": "af1776590397568",
+      "name": "ET2 Vape Pod System 30 W Refillable E Cigarette Vaporiser 1000 mAh Battery, Adjustable Airflow Quick Charge Evaporator E Cigarettes for DTL/RDL/MTL Vaping without Liquid without Nicotine Feather Grey",
+      "price": 16.99,
+      "affiliateLink": "https://amzlink.to/az0f1ktMKIG3e",
+      "img": "https://m.media-amazon.com/images/I/71SrDKQuX6L.jpg_BO30,255,255,255_UF750,750_SR1910,1000,0,C_ZJPHNwYW4gZm9yZWdyb3VuZD0iIzBGMTExMSIgZm9udD0iQW1hem9uRW1iZXIgNjYiPjQuMjwvc3Bhbj4=,60,875,420,420,0,0_PIRIOFOUR-medium-V2,TopLeft,190,885_ZJPHNwYW4gZm9yZWdyb3VuZD0iIzU2NTk1OSIgZm9udD0iQW1hem9uRW1iZXIgNjYiPig2OSk8L3NwYW4+,650,875,420,420,0,0_QL100_.jpg",
+      "desc": "ET2 E cigarette kit complete without liquid, no refill, no nicotine, only sold and shipped to aged 18 or over.",
+      "badge": "",
+      "stars": 5
+    }
+  ],
+  "backgrounds": {},
+  "config": {
+    "version": "2.0.0",
+    "last_updated": "2026-04-19",
+    "hosted_on": "github_pages"
+  }
+}
