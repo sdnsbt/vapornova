@@ -33,8 +33,8 @@ function renderContentWithAffiliates(rawContent) {
 function blogCardHTML(post, mini=false) {
   return `
   <div class="blog-card" onclick="openArticle(${post.id})">
-    <div style="overflow:hidden;height:200px">
-      <img class="blog-card-img" src="${post.img}" alt="${post.title}" loading="lazy">
+    <div class="blog-card-img">
+      <img src="${post.img}" alt="${post.title}" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1560343776-97e7d202ff0e?w=800&q=80'">
     </div>
     <div class="blog-card-body">
       <span class="blog-card-cat">${post.cat}</span>
@@ -108,8 +108,8 @@ function openArticle(id) {
     
     <!-- CTA produit -->
     <div style="background:var(--ink3);border:1px solid var(--border);border-radius:var(--r);padding:24px;margin-top:32px;text-align:center">
-      <div style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--gold2);margin-bottom:8px">Prête à commander votre caftan ? ✨</div>
-      <p style="color:var(--muted);font-size:13px;margin-bottom:16px">Découvrez notre collection et commandez sur mesure avec livraison internationale.</p>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--gold2);margin-bottom:8px">Prêt à commander votre vape ? ✨</div>
+      <p style="color:var(--muted);font-size:13px;margin-bottom:16px">Découvrez notre sélection premium et commandez avec livraison rapide partout dans le monde.</p>
       <span class="btn-hero btn-primary" onclick="showPage('shop')">Voir la boutique →</span>
     </div>
     
@@ -125,7 +125,7 @@ function openArticle(id) {
       <div class="blog-related-grid">
         ${related.map(p=>`
           <div class="blog-card" onclick="openArticle(${p.id})" style="cursor:pointer">
-            <div style="height:120px;overflow:hidden"><img class="blog-card-img" src="${p.img}" alt="${p.title}" loading="lazy" style="height:120px"></div>
+            <div style="height:120px;overflow:hidden;background:#0a0d18"><img class="blog-card-img" src="${p.img}" alt="${p.title}" loading="lazy" style="width:100%;height:120px;object-fit:cover;object-position:center center;display:block"></div>
             <div class="blog-card-body" style="padding:14px">
               <div class="blog-card-title" style="font-size:1rem">${p.title}</div>
               <button class="blog-read-more" style="margin-top:8px">Lire →</button>
