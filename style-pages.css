@@ -233,7 +233,7 @@
 .shop-wrapper {
   max-width: var(--max);
   margin: 0 auto;
-  padding: 56px 28px 80px;
+  padding: 90px 28px 80px;
 }
 
 .shop-header-bar {
@@ -293,7 +293,7 @@
 .blog-wrapper {
   max-width: var(--max);
   margin: 0 auto;
-  padding: 56px 28px 80px;
+  padding: 90px 28px 80px;
 }
 
 /* Blog article cards — cinematic */
@@ -433,7 +433,7 @@
 .affiliate-wrapper {
   max-width: var(--max);
   margin: 0 auto;
-  padding: 56px 28px 80px;
+  padding: 90px 28px 80px;
 }
 
 /* Affiliate cards */
@@ -470,7 +470,7 @@
 .contact-wrapper {
   max-width: var(--max);
   margin: 0 auto;
-  padding: 56px 28px 80px;
+  padding: 90px 28px 80px;
 }
 
 .contact-grid {
@@ -753,7 +753,7 @@
   .page-hero-stats { display: none; }
   .page-hero-title { font-size: clamp(2.5rem, 12vw, 4rem); letter-spacing: -1px; }
   .blog-grid { grid-template-columns: 1fr; }
-  .shop-wrapper, .blog-wrapper, .affiliate-wrapper, .contact-wrapper { padding: 36px 16px 56px; }
+  .shop-wrapper, .blog-wrapper, .affiliate-wrapper, .contact-wrapper { padding: 80px 16px 56px; }
 }
 
 
