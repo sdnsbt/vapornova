@@ -1,11 +1,16 @@
-/* ═══ ROUTER — Navigation SPA ═══ */
-/* DEAKTIVIERT - Website verwendet jetzt separate HTML-Dateien */
+/* ═══ ROUTER — Navigation ═══ */
 
-// Router ist deaktiviert, da die Website jetzt mit separaten HTML-Dateien arbeitet
-// Alle Links zeigen direkt auf .html Dateien (boutique.html, blog.html, etc.)
+// Detect base path (works both locally and on GitHub Pages /vapornova/)
+const BASE = (function() {
+  const p = window.location.pathname;
+  const m = p.match(/^(\/[^/]+\/)/);
+  // If running on GitHub Pages under a subpath (e.g. /vapornova/), use it
+  // If running locally or at root, use empty string
+  if (m && m[1] !== '/') return m[1];
+  return '';
+})();
 
 window.addEventListener('DOMContentLoaded', () => {
-  // Cacher modals au démarrage
   ['adminModal','adminLogin','cartOverlay','cartSidebar','productModal','mobileMenu'].forEach(id => {
     const el = document.getElementById(id);
     if(!el) return;
@@ -14,22 +19,19 @@ window.addEventListener('DOMContentLoaded', () => {
   });
   if(typeof applyAdsConfig === 'function') applyAdsConfig();
   if(typeof renderRevChart === 'function') renderRevChart();
-  // Note: le rendu des pages est géré par page-init.js (avec DataSync.load)
 });
 
-// Dummy-Funktion für Kompatibilität
 function showPage(name) {
-  // Leite zu der entsprechenden HTML-Datei um
   const pages = {
-    'home': 'index.html',
-    'shop': 'boutique.html',
-    'blog': 'blog.html',
-    'contact': 'contact.html',
+    'home':      'index.html',
+    'shop':      'boutique.html',
+    'blog':      'blog.html',
+    'contact':   'contact.html',
     'affiliate': 'affiliation.html'
   };
-  if(pages[name]) window.location.href = pages[name];
+  if(pages[name]) window.location.href = BASE + pages[name];
 }
 
 function filterAndShow(cat) {
-  window.location.href = 'boutique.html?filter=' + cat;
+  window.location.href = BASE + 'boutique.html?filter=' + cat;
 }
