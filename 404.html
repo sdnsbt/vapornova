@@ -1,16 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <link rel="icon" type="image/svg+xml" href="favicon.svg">
-<meta charset="UTF-8">
-<title>VaporNova</title>
-<script>
-  // GitHub Pages SPA redirect trick
-  var path = window.location.pathname;
-  var search = window.location.search;
-  var hash = window.location.hash;
-  var redirect = window.location.origin + '/?p=' + encodeURIComponent(path) + (search ? '&q=' + encodeURIComponent(search) : '') + hash;
-  window.location.replace(redirect);
-</script>
+  <meta charset="utf-8">
+  <title>VaporNova — Page introuvable</title>
+  <script>
+    // GitHub Pages 404 redirect — preserve path under /vapornova/
+    var base = '/vapornova/';
+    var path = window.location.pathname.replace(/^\/vapornova/, '') || '/';
+    var search = window.location.search;
+    var hash = window.location.hash;
+    // If the path is a known page, redirect directly
+    var pages = { '/boutique': 'boutique.html', '/blog': 'blog.html', '/contact': 'contact.html', '/affiliation': 'affiliation.html' };
+    var clean = path.replace(/\/$/, '');
+    if (pages[clean]) {
+      window.location.replace(base + pages[clean]);
+    } else {
+      window.location.replace(base + 'index.html');
+    }
+  </script>
 </head>
+<body></body>
 </html>
