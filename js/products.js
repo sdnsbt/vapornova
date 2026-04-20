@@ -30,11 +30,51 @@ function renderFeatured() {
   el.innerHTML = PRODUCTS.slice(0,4).map(p=>productCardHTML(p)).join('');
 }
 
+let currentSearch = '';
+
 function renderShop() {
   const el = document.getElementById('shopGrid');
   if(!el) return;
-  const list = currentFilter==='all' ? PRODUCTS : PRODUCTS.filter(p=>p.cat===currentFilter);
+  let list = currentFilter==='all' ? PRODUCTS : PRODUCTS.filter(p=>p.cat===currentFilter);
+  if(currentSearch) {
+    const q = currentSearch.toLowerCase();
+    list = list.filter(p =>
+      (p.name||'').toLowerCase().includes(q) ||
+      (p.brand||'').toLowerCase().includes(q) ||
+      (p.desc||'').toLowerCase().includes(q) ||
+      (p.cat||'').toLowerCase().includes(q)
+    );
+  }
+  const count = document.getElementById('shopResultCount');
+  if(count) count.textContent = list.length + ' produit' + (list.length!==1?'s':'');
+  if(list.length === 0) {
+    el.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:60px 20px;color:var(--muted)">
+      <div style="font-size:2rem;margin-bottom:12px">🔍</div>
+      <div style="font-size:1.1rem;color:var(--ice);margin-bottom:8px">Aucun produit trouvé</div>
+      <div style="font-size:13px">Essayez un autre mot-clé ou <a href="#" onclick="clearSearch()" style="color:var(--blue2)">effacez la recherche</a></div>
+    </div>`;
+    return;
+  }
   el.innerHTML = list.map(p=>productCardHTML(p)).join('');
+}
+
+function searchShop(val) {
+  currentSearch = val.trim();
+  // Reset category filter visually when searching
+  if(currentSearch) {
+    document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+    currentFilter = 'all';
+  }
+  renderShop();
+}
+
+function clearSearch() {
+  currentSearch = '';
+  const input = document.getElementById('shopSearch');
+  if(input) input.value = '';
+  const firstBtn = document.querySelector('.filter-btn');
+  if(firstBtn) { firstBtn.classList.add('active'); }
+  renderShop();
 }
 
 /* ═══════════ AFFILIATE ═══════════ */
@@ -81,6 +121,9 @@ function renderAffiliatePage() {
 
 function filterShop(cat, btn) {
   currentFilter = cat;
+  currentSearch = '';
+  const input = document.getElementById('shopSearch');
+  if(input) input.value = '';
   document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
   if(btn) btn.classList.add('active');
   else { const fb = document.querySelector('.filter-btn'); if(fb) fb.classList.add('active'); }
