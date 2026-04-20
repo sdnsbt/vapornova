@@ -1049,10 +1049,10 @@
   <script src="js/modal.js"></script>
   <script src="js/cart.js"></script>
   <script src="js/admin.js"></script>
-  <script src="js/github.js?v=3"></script>
+  <script src="js/github.js?v=4"></script>
   <script src="js/analytics.js"></script>
   <script src="js/page-init.js"></script>
-  <script src="js/router.js"></script>
+  <script src="js/router.js?v=2"></script>
 
   <!-- Save Banner -->
   <div id="saveBanner" style="position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#0d1420;border:1px solid rgba(201,168,76,0.4);border-radius:12px;padding:14px 22px;z-index:9999;display:flex;align-items:center;gap:14px;min-width:320px;max-width:520px;box-shadow:0 8px 32px rgba(0,0,0,0.6);opacity:0;pointer-events:none;transition:opacity 0.3s,transform 0.3s;transform:translateX(-50%) translateY(20px)">
@@ -1098,5 +1098,30 @@
   if(nav){ window.addEventListener('scroll', function(){ nav.classList.toggle('scrolled', window.scrollY>40); }, {passive:true}); }
 })();
 </script>
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <span class="footer-logo">VAPOR<span style="opacity:0.4;font-size:0.7em">NOVA</span></span>
+        <p class="footer-tagline">La boutique vape premium. Sélection rigoureuse, service expert, livraison rapide.</p>
+      </div>
+      <div><div class="footer-col-title">Navigation</div><div class="footer-links">
+        <a onclick="window.location='index.html'">Accueil</a>
+        <a onclick="window.location='boutique.html'">Boutique</a>
+        <a onclick="window.location='affiliation.html'">Affiliate</a>
+        <a onclick="window.location='blog.html'">Blog</a>
+        <a onclick="window.location='contact.html'">Contact</a>
+      </div></div>
+      <div><div class="footer-col-title">Infos</div><div class="footer-links">
+        <a href="#">Mentions légales</a>
+        <a href="#">CGV</a>
+        <a href="#">Confidentialité</a>
+        <a href="#">Livraison &amp; Retours</a>
+      </div></div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 VaporNova — Tous droits réservés</span>
+      <span style="display:flex;gap:16px"><a href="#">CGV</a><a href="#">Confidentialité</a></span>
+    </div>
+  </footer>
 </body>
 </html>
