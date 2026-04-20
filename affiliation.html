@@ -966,23 +966,7 @@
   <script src="js/page-init.js"></script>
   <script src="js/router.js?v=2"></script>
 
-<script>
-  // Forcer le rendu
-  console.log('Chargement affiliation...');
-  console.log('AFFILIATE_PRODUCTS:', typeof AFFILIATE_PRODUCTS !== 'undefined' ? AFFILIATE_PRODUCTS.length : 'undefined');
-  console.log('renderAffiliatePage:', typeof renderAffiliatePage);
-  
-  if (typeof renderAffiliatePage === 'function') {
-    renderAffiliatePage();
-    console.log('renderAffiliatePage() appelé');
-  } else {
-    console.error('renderAffiliatePage() non trouvée!');
-  }
-  
-  if (typeof updateCartBadge === 'function') {
-    updateCartBadge();
-  }
-</script>
+<!-- renderAffiliatePage géré par page-init.js après DataSync.load() -->
 
 <div class="modal-overlay" id="zoomOverlay" onclick="document.getElementById('zoomOverlay').classList.remove('open')" style="z-index:600;cursor:zoom-out">
   <img id="zoomImg" src="" alt="" style="max-width:94vw;max-height:92vh;object-fit:contain;border-radius:10px;box-shadow:0 20px 60px rgba(0,0,0,0.7)">
