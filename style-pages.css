@@ -239,9 +239,8 @@
 .shop-header-bar {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  gap: 6px;
   margin-bottom: 40px;
-  gap: 20px;
   flex-wrap: wrap;
 }
 
@@ -249,12 +248,29 @@
   font-size: 12px;
   color: var(--muted);
   letter-spacing: 0.5px;
+  margin-left: auto;
+  white-space: nowrap;
 }
 
 .shop-filters {
   display: flex;
-  gap: 8px;
+  gap: 6px;
   flex-wrap: wrap;
+}
+
+.shop-search-wrap {
+  flex: 1;
+  max-width: 300px;
+  min-width: 140px;
+}
+
+.shop-search-wrap input::placeholder {
+  color: var(--muted);
+}
+
+.shop-search-wrap input::-webkit-search-cancel-button {
+  filter: invert(0.5);
+  cursor: pointer;
 }
 
 /* ─── BLOG PAGE ──────────────────────────────────────────────────────── */
