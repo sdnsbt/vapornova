@@ -969,13 +969,13 @@
       <button class="filter-btn" onclick="filterAffiliate('5',this)">★★★★★</button>
       <button class="filter-btn" onclick="filterAffiliate('promo',this)">Promo</button>
       <div style="width:1px;height:18px;background:rgba(255,255,255,0.1);margin:0 4px;flex-shrink:0"></div>
-      <div style="position:relative;display:flex;align-items:center">
-        <svg style="position:absolute;left:12px;width:12px;height:12px;opacity:0.35;pointer-events:none" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <div id="affiliateSearchWrap" style="position:relative;display:flex;align-items:center">
+        <button onclick="toggleSearch('affiliateSearch','affiliateSearchWrap')" style="background:transparent;border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.5);border-radius:100px;width:36px;height:34px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all 0.2s;flex-shrink:0" onmouseenter="this.style.borderColor='rgba(30,144,255,0.5)';this.style.color='#e8f4ff'" onmouseleave="this.style.borderColor='rgba(255,255,255,0.15)';this.style.color='rgba(255,255,255,0.5)'">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        </button>
         <input id="affiliateSearch" type="search" placeholder="Rechercher…"
           oninput="searchAffiliate(this.value)"
-          style="background:transparent;border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.6);border-radius:100px;padding:8px 16px 8px 32px;font-size:10px;font-family:'Syne',sans-serif;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;outline:none;width:155px;transition:border-color 0.2s,color 0.2s"
-          onfocus="this.style.borderColor='rgba(30,144,255,0.6)';this.style.color='#e8f4ff'"
-          onblur="this.style.borderColor='rgba(255,255,255,0.15)';this.style.color='rgba(255,255,255,0.6)'">
+          style="background:rgba(30,144,255,0.06);border:1px solid rgba(30,144,255,0.4);color:#e8f4ff;border-radius:100px;padding:8px 16px 8px 16px;font-size:10px;font-family:'Syne',sans-serif;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;outline:none;width:0;opacity:0;position:absolute;right:0;transition:width 0.3s ease,opacity 0.3s ease;pointer-events:none">
       </div>
       <div id="affiliateCount" style="margin-left:auto;font-size:11px;color:var(--muted);letter-spacing:0.5px"></div>
     </div>
