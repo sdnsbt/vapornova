@@ -35,3 +35,51 @@ function showPage(name) {
 function filterAndShow(cat) {
   window.location.href = BASE + 'boutique.html?filter=' + cat;
 }
+
+/* ═══ SEARCH TOGGLE — Lupe klappt auf ═══ */
+function toggleSearch(inputId, wrapperId) {
+  const input   = document.getElementById(inputId);
+  const wrapper = document.getElementById(wrapperId);
+  if (!input) return;
+
+  const isOpen = input.style.opacity === '1';
+
+  if (isOpen) {
+    // Zuklappen
+    input.style.width   = '0';
+    input.style.opacity = '0';
+    input.style.pointerEvents = 'none';
+    input.value = '';
+    // Reset search
+    if (inputId === 'shopSearch'      && typeof searchShop      === 'function') searchShop('');
+    if (inputId === 'affiliateSearch' && typeof searchAffiliate === 'function') searchAffiliate('');
+  } else {
+    // Aufklappen
+    input.style.width        = '180px';
+    input.style.opacity      = '1';
+    input.style.pointerEvents = 'auto';
+    // Suchfeld rechts vom Button — Button bleibt sichtbar links
+    input.style.position     = 'relative';
+    input.style.marginLeft   = '8px';
+    setTimeout(() => input.focus(), 310);
+  }
+}
+
+// Klick außerhalb schließt das Suchfeld
+document.addEventListener('click', function(e) {
+  ['shopSearchWrap','affiliateSearchWrap'].forEach(function(wId) {
+    const w = document.getElementById(wId);
+    if (!w) return;
+    const inputId = wId === 'shopSearchWrap' ? 'shopSearch' : 'affiliateSearch';
+    const input   = document.getElementById(inputId);
+    if (!input || input.style.opacity !== '1') return;
+    if (!w.contains(e.target)) {
+      input.style.width        = '0';
+      input.style.opacity      = '0';
+      input.style.pointerEvents = 'none';
+      input.value = '';
+      if (inputId === 'shopSearch'      && typeof searchShop      === 'function') searchShop('');
+      if (inputId === 'affiliateSearch' && typeof searchAffiliate === 'function') searchAffiliate('');
+    }
+  });
+});
