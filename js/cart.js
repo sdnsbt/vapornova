@@ -542,11 +542,13 @@ function orderWhatsApp(id) {
 /* ═══════════ WISHLIST ═══════════ */
 function toggleWish(e, id) {
   e.stopPropagation();
-  const idx = wishlist.indexOf(id);
+  const idx = wishlist.findIndex(x => x == id);
   if(idx>-1) wishlist.splice(idx,1);
   else wishlist.push(id);
   localStorage.setItem('vn_wish', JSON.stringify(wishlist));
-  renderFeatured(); renderShop();
+  if(typeof renderFeatured === 'function') renderFeatured();
+  if(typeof renderShop === 'function') renderShop();
+  if(typeof _renderAffGrid === 'function') _renderAffGrid();
   toast(idx>-1 ? 'Retiré des favoris' : 'Ajouté aux favoris ❤️');
 }
 
