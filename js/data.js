@@ -1,4 +1,4 @@
-/* ═══ DATA — Généré par server.py le 21/04/2026 07:28:53 ═══ */
+/* ═══ DATA — Généré par server.py le 21/04/2026 07:44:49 ═══ */
 
 /* ═══ DATA ═══ */
 let PRODUCTS = JSON.parse(localStorage.getItem('vn_products') || 'null') || [
