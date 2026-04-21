@@ -55,6 +55,7 @@ function _renderAffGrid() {
         <img src="${p.img}" alt="${p.name}" class="product-img" onerror="this.src='https://images.unsplash.com/photo-1560343776-97e7d202ff0e?w=600&q=80'">
         ${p.badge ? `<span class="product-badge">${p.badge}</span>` : ''}
         <div style="position:absolute;top:12px;left:12px;background:linear-gradient(135deg,#27ae60,#1e8449);color:white;font-size:9px;font-weight:800;padding:4px 8px;border-radius:4px;letter-spacing:1.5px">AFFILIÉ</div>
+        <button class="product-wishlist ${(typeof wishlist !== 'undefined' && wishlist.some(x => x == p.id)) ? 'liked' : ''}" onclick="event.stopPropagation();toggleWish(event,'${p.id}')">${(typeof wishlist !== 'undefined' && wishlist.some(x => x == p.id)) ? '❤️' : '🤍'}</button>
       </div>
       <div class="product-info">
         <div class="product-name">${p.name}</div>
